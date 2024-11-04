@@ -1,19 +1,43 @@
 import { Img, Heading } from "./..";
-import React from "react";
-import { MenuItem, SubMenu, Menu, Sidebar, sidebarClasses } from "react-pro-sidebar";
+import React, { useState } from "react";
+import { MenuItem, SubMenu, Menu, Sidebar } from "react-pro-sidebar";
 
 interface Props {
   className?: string;
 }
 
 export default function Sidebar1({ ...props }: Props) {
+  const [selectedItem, setSelectedItem] = useState<string | null>(null);
+
+  // Function to handle menu item click
+  const handleMenuItemClick = (itemName: string) => {
+    setSelectedItem(itemName);
+  };
+
   return (
     <Sidebar
       {...props}
       width="234px !important"
       className={`${props.className} flex flex-col h-screen pt-6 top-0 px-1.5 sm:pt-5 !border-gray-800 !border-r !border-solid bg-gray-900 !sticky overflow-auto`}
     >
-      <Img src="images/img_logo.png" alt="Logo" className="mx-2 h-[68px] w-full rounded-lg object-cover" />
+      <div className="flex gap-3 items-center border border-[#FFFFFF] rounded-[8px] p-[10px] w-full max-w-[200px] mx-auto">
+        <div className="relative">
+          <img src="images/Avatar.png" alt="" className="w-[48px] h-[48px]" />
+          <img
+            src="images/Status.png"
+            alt=""
+            className="absolute w-[14px] h-[14px] bottom-0 right-0"
+          />
+        </div>
+        <div>
+          <h2 className="text-[14px] text-[#E8EAF6] font-semibold leading-[24px] uppercase">
+            John Doe
+          </h2>
+          <p className="text-[14px] text-[#90A4AE] font-semibold leading-[24px] uppercase">
+            D. in Medicine
+          </p>
+        </div>
+      </div>
       <Menu
         menuItemStyles={{
           button: {
@@ -24,64 +48,194 @@ export default function Sidebar1({ ...props }: Props) {
             fontWeight: 600,
             fontSize: "14px",
             borderRadius: "8px",
-            [`&:hover, &.ps-active`]: { color: "#ffffff", backgroundColor: "#048ffd !important" },
+            textTransform: "uppercase",
+            [`&:hover, &.ps-active`]: {
+              color: "#ffffff",
+              backgroundColor: "#048ffd !important",
+            },
           },
         }}
         className="mt-6 flex w-full flex-col items-center self-stretch pb-2 pl-2"
       >
         <div className="mr-2 self-stretch">
-          <MenuItem
-            icon={<Img src="images/img_ri_dashboard_line.svg" alt="Ridashboard" className="h-[24px] w-[24px]" />}
+          <SubMenu
+            icon={
+              <Img
+                src="images/img_mingcute_comment_line.svg"
+                alt="Mingcute"
+                className="h-[24px]  w-[24px]"
+              />
+            }
+            label="Workspace"
+            onClick={() => handleMenuItemClick("Workspace")}
+            style={
+              selectedItem === "Workspace"
+                ? { color: "#ffffff", backgroundColor: "#048ffd" }
+                : {}
+            }
           >
-            Workspace
-          </MenuItem>
+            <div className=" pl-4 mb-4 max-h-[190px] overflow-y-scroll relative">
+              <div className="flex justify-end pr-3">
+                {" "}
+                <img className="" src="images/edit.svg" alt="" />
+              </div>
+              <p className="text-[12px] text-[#FFFFFF] font-bold leading-[12.8px]">
+                Today
+              </p>
+              <p className="text-[12px] text-[#ADADAD] font-normal leading-[13.8px] mt-2">
+                Lorem ipsum dolor sit amet lorem ip
+              </p>
+              <div className="h-[1px] w-full bg-[#FFFFFF33] my-2"></div>
+              <p className="text-[12px] text-[#ADADAD] font-normal leading-[13.8px] mt-2">
+                Lorem ipsum dolor sit amet lorem ip
+              </p>
+              <div className="h-[1px] w-full bg-[#FFFFFF33] my-2"></div>
+              <p className="text-[12px] text-[#FFFFFF] font-bold leading-[12.8px]">
+                Yesterday
+              </p>
+              <p className="text-[12px] text-[#ADADAD] font-normal leading-[13.8px] mt-2">
+                Lorem ipsum dolor sit amet lorem ip
+              </p>
+              <div className="h-[1px] w-full bg-[#FFFFFF33] my-2"></div>
+              <p className="text-[12px] text-[#ADADAD] font-normal leading-[13.8px] mt-2">
+                Lorem ipsum dolor sit amet lorem ip
+              </p>
+              <div className="h-[1px] w-full bg-[#FFFFFF33] my-2"></div>
+            </div>
+          </SubMenu>
         </div>
-        <div className="mt-[38px] flex items-start justify-end self-stretch">
+        {/* <div className="mt-[38px] flex items-start justify-end self-stretch">
           <div className="h-[184px] w-[2px] self-center rounded-[1px] bg-white-a700_19" />
           <div className="relative ml-[-2px] h-[56px] w-[2px] rounded-[1px] bg-white-a700" />
-        </div>
+        </div> */}
         <div className="mr-2 flex flex-col gap-1.5 self-stretch">
           <SubMenu
-            icon={<Img src="images/img_mingcute_comment_line.svg" alt="Mingcute" className="h-[24px] w-[24px]" />}
+            icon={
+              <Img
+                src="images/img_mingcute_comment_line.svg"
+                alt="Mingcute"
+                className="h-[24px] w-[24px]"
+              />
+            }
             label="Shared THREADS"
+            onClick={() => handleMenuItemClick("Shared")}
+            style={
+              selectedItem === "Shared"
+                ? { color: "#ffffff", backgroundColor: "#048ffd" }
+                : {}
+            }
           >
             <MenuItem>Submenu Item</MenuItem>
           </SubMenu>
-          <MenuItem icon={<Img src="images/img_bx_file.svg" alt="Bxfile" className="h-[24px] w-[24px]" />}>
+          <MenuItem
+            icon={
+              <Img
+                src="images/img_bx_file.svg"
+                alt="Bxfile"
+                className="h-[24px] w-[24px]"
+              />
+            }
+            onClick={() => handleMenuItemClick("DATA INGESTION")}
+            style={
+              selectedItem === "DATA INGESTION"
+                ? { color: "#ffffff", backgroundColor: "#048ffd" }
+                : {}
+            }
+          >
             DATA INGESTION
           </MenuItem>
-          <MenuItem icon={<Img src="images/img_icon.svg" alt="Icon" className="h-[24px] w-[24px]" />}>
+          <MenuItem
+            icon={
+              <Img
+                src="images/settings.svg"
+                alt="Icon"
+                className="h-[24px] w-[24px]"
+              />
+            }
+            onClick={() => handleMenuItemClick("settings")}
+            style={
+              selectedItem === "settings"
+                ? { color: "#ffffff", backgroundColor: "#048ffd" }
+                : {}
+            }
+          >
             settings
           </MenuItem>
-          <MenuItem icon={<Img src="images/img_group.svg" alt="Image" className="h-[20px] w-[16px]" />}>ALERT</MenuItem>
-          <MenuItem icon={<Img src="images/img_icon_indigo_50.svg" alt="Icon" className="h-[24px] w-[24px]" />}>
+
+          <MenuItem
+            icon={
+              <Img
+                src="images/img_group.svg"
+                alt="Image"
+                className="h-[20px] w-[16px]"
+              />
+            }
+            onClick={() => handleMenuItemClick("alert")}
+            style={
+              selectedItem === "alert"
+                ? { color: "#ffffff", backgroundColor: "#048ffd" }
+                : {}
+            }
+          >
+            ALERT
+          </MenuItem>
+          <MenuItem
+            icon={
+              <Img
+                src="images/img_icon_indigo_50.svg"
+                alt="Icon"
+                className="h-[24px] w-[24px]"
+              />
+            }
+            onClick={() => handleMenuItemClick("helpcenter")}
+            style={
+              selectedItem === "helpcenter"
+                ? { color: "#ffffff", backgroundColor: "#048ffd" }
+                : {}
+            }
+          >
             Help center
           </MenuItem>
+          {/* Repeat for other items as necessary */}
         </div>
-        <Heading
-          size="headingxs"
-          as="p"
-          className="mt-2.5 text-[10px] font-semibold uppercase tracking-[-0.10px] text-white-a700"
-        >
-          light mode
-        </Heading>
-        <div className="mt-1.5 flex w-[40%] rounded-[12px] border-[0.5px] border-solid border-white-a700 bg-gradient">
+        <div className="pr-2">
+          <Heading
+            size="headingxs"
+            as="p"
+            className="mt-2.5 text-[10px] font-semibold uppercase tracking-[-0.10px] text-white-a700 text-center"
+          >
+            light mode
+          </Heading>
+          <Img
+            src="images/switch.png"
+            alt="Icon"
+            className=" w-[40%] mx-auto mt-2"
+          />
+        </div>
+        {/* <div className="mt-1.5 flex w-[40%] rounded-[12px] border-[0.5px] border-solid border-white-a700 bg-gradient mx-auto">
           <div className="h-[18px] w-[18px] rounded-lg bg-white-a700" />
-        </div>
-        <div className="mr-2 mt-[150px] self-stretch">
-          <MenuItem icon={<Img src="images/img_icon_indigo_50_24x24.svg" alt="Icon" className="h-[24px] w-[24px]" />}>
+        </div> */}
+        <div className="mr-2 mt-[120px] self-stretch">
+          <MenuItem
+            icon={
+              <Img
+                src="images/img_icon_indigo_50_24x24.svg"
+                alt="Icon"
+                className="h-[24px] w-[24px]"
+              />
+            }
+          >
             Log out
           </MenuItem>
+
+          <div className="h-[1px] w-full bg-[#FFFFFF33] my-2"></div>
+          <Img
+            src="images/logoo.png"
+            alt="Icon"
+            className="h-[42px] w-[200px] mt-4"
+          />
         </div>
       </Menu>
-      <div className="mx-2 mt-2.5 flex items-start justify-center gap-3 self-stretch">
-        <Img
-          src="images/img_sidebar_logo.png"
-          alt="Sidebarlogo"
-          className="h-[58px] w-[162px] self-center object-contain"
-        />
-        <Img src="images/img_arrow_down.svg" alt="Arrowdown" className="mt-3 h-[24px] w-[24px]" />
-      </div>
     </Sidebar>
   );
 }
