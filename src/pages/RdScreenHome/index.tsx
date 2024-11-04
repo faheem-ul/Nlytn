@@ -159,7 +159,7 @@ export default function RdScreenHomePage() {
               vulputate libero et velit interdum.
             </Text>
 
-            <div className="border border-[#fff] w-full px-2 py-2 max-w-[520px] rounded-[23px] mb-[24px] flex justify-between mt-10">
+            <div className="border border-[#fff] w-full px-2 py-2 max-w-[520px] rounded-[23px] mb-[12px] flex justify-between mt-10">
               <Text
                 className="font-semibold cursor-pointer text-white-a700"
                 onClick={() => setCurrentAnswer(1)}
@@ -179,10 +179,10 @@ export default function RdScreenHomePage() {
                 Answer 3
               </Text>
             </div>
-            <div>
-              <div className=""></div>
-              <div></div>
-              <div></div>
+            <div className="w-full max-w-[516px] mt-3 bg-white-a700 flex mb-[24px]">
+              <div className={`w-[172px] h-[1px] ${currentAnswer === 1 ? "bg-[#249cff]" : ""}`}></div>
+              <div className={`w-[172px] h-[1px] ${currentAnswer === 2 ? "bg-[#249cff]" : ""}`}></div>
+              <div className={`w-[172px] h-[1px] ${currentAnswer === 3 ? "bg-[#249cff]" : ""}`}></div>
             </div>
 
             {currentAnswer === 1 && (
@@ -305,7 +305,7 @@ export default function RdScreenHomePage() {
                 type="text"
                 value={text}
                 onChange={(e) => setText(e.target.value)}
-                className="w-full h-[110px] text-white-a700 bg-transparent font-semibold border-none outline-none focus:outline-none focus:ring-0 pl-0 pr-12"
+                className="w-full text-white-a700 bg-transparent font-semibold border-none outline-none focus:outline-none focus:ring-0  pl-14 pr-18"
                 // placeholder="Type here..."
               />
 
