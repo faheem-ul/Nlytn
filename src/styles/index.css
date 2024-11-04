@@ -77,3 +77,9 @@ body {
 .ps-sidebar-container::-webkit-scrollbar {
   width: 2px;
 }
+
+.input-gradient{
+  background: radial-gradient(50% 50% at 50% 50%, rgba(7, 246, 249, 0.2) 0%, rgba(93, 64, 164, 0) 100%),
+linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+
+}
