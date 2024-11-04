@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /*------Color variables------*/
+    --black_900: #010a12;
+    --cyan_300_7f: #44d4d27f;
+    --cyan_a400_33: #07f6f933;
+    --deep_purple_600_33: #5d40a433;
+    --gray_500: #adadad;
+    --gray_500_01: #999999;
+    --gray_800: #424242;
+    --gray_900: #031627;
+    --indigo_50: #e8eaf6;
+    --indigo_600: #3949ab;
+    --light_blue_a700: #048ffd;
+    --white_a700: #ffffff;
+    --white_a700_19: #ffffff19;
+
+    /*------Border radius variables------*/
+    --radius-xs: 1px;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+
+    /*------Spacing variables------*/
+    --space-xs: 12px;
+  }
+}
