@@ -67,6 +67,12 @@ export default function Sidebar1({ ...props }: Props) {
               />
             }
             label="Workspace"
+            onClick={() => handleMenuItemClick("Workspace")}
+            style={
+              selectedItem === "Workspace"
+                ? { color: "#ffffff", backgroundColor: "#048ffd" }
+                : {}
+            }
           >
             <div className=" pl-4 mb-4 max-h-[190px] overflow-y-scroll relative">
               <div className="flex justify-end pr-3">
@@ -112,6 +118,12 @@ export default function Sidebar1({ ...props }: Props) {
               />
             }
             label="Shared THREADS"
+            onClick={() => handleMenuItemClick("Shared")}
+            style={
+              selectedItem === "Shared"
+                ? { color: "#ffffff", backgroundColor: "#048ffd" }
+                : {}
+            }
           >
             <MenuItem>Submenu Item</MenuItem>
           </SubMenu>
