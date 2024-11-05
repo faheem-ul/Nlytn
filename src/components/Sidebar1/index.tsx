@@ -1,4 +1,4 @@
-import { Img, Heading } from "./..";
+import { Img, Heading, Text } from "./..";
 import React, { useState } from "react";
 import { MenuItem, SubMenu, Menu, Sidebar } from "react-pro-sidebar";
 
@@ -177,6 +177,8 @@ export default function Sidebar1({ ...props }: Props) {
                 : {}
             }
           >
+            
+              <Text className="bg-[#FF0000] max-w-[12px] max-h-[12px] p-[7px] text-[9px] text-[#FFFFFF] font-bold rounded-full  absolute top-[12px] left-[22px] flex justify-center items-center">1</Text>
             ALERT
           </MenuItem>
           <MenuItem
