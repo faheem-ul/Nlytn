@@ -45,6 +45,9 @@ export default function RdScreenHomePage() {
     setAnswerTwo(false);
     setAnswerThree(true);
   };
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const maxVisibleImages = 3;
+
   return (
     <>
       <Helmet>
@@ -82,7 +85,6 @@ export default function RdScreenHomePage() {
                 </button>
               </div>
             </div>
-
             <Text
               as="p"
               className="mt-2 w-[44%] text-[14px] font-light leading-[128%] text-gray-500 md:w-full"
@@ -90,21 +92,41 @@ export default function RdScreenHomePage() {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
               vulputate libero et velit interdum.
             </Text>
-
             <div className="w-full flex gap-2 justify-end px-[30px] mb-[27px] mt-7">
               <Img
                 src="images/img_clock.svg"
                 alt="Clock"
                 className="h-[16px] w-[16px] self-center"
               />
-              <div className="w-full max-w-[450px] min-h-[60px] border border-[#fff]/50 px-3 py-4 rounded-[8px]">
-                <Text className="text-[#249cff] text-[14px] text-right leading-[17px]">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-                  vulputate libero et velit interdum.
-                </Text>
+              {/* img */}
+              <div>
+                <div className="flex flex-wrap gap-[15px] justify-end mb-2">
+                  <img
+                    className="w-[89.56px] h-[76.34px]"
+                    src="images/Mask group@2x.png"
+                    alt="cahtimg"
+                  />
+                  <img
+                    className="w-[89.56px] h-[76.34px]"
+                    src="images/Mask group@2x.png"
+                    alt="cahtimg"
+                  />
+                  <img
+                    className="w-[89.56px] h-[76.34px]"
+                    src="images/Mask group@2x.png"
+                    alt="cahtimg"
+                  />
+                </div>
+                {/* text chat */}
+                <div className="w-full max-w-[450px] min-h-[60px] border border-[#fff]/50 px-3 py-4 rounded-[8px]">
+                  <Text className="text-[#048FFD] text-[14px] text-right leading-[17px]">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Nunc vulputate libero et velit interdum.
+                  </Text>
+                </div>
               </div>
             </div>
-
+            {/* text edit */}
             <div className="w-full flex gap-2 justify-center px-[30px] mb-[27px]">
               {/* <Img
                 src="images/img_clock.svg"
@@ -112,7 +134,7 @@ export default function RdScreenHomePage() {
                 className="h-[16px] w-[16px] self-center"
               /> */}
               <div className="w-full max-w-[550px] min-h-[60px] border border-[#fff]/50 px-3 py-4 rounded-[8px]">
-                <Text className="text-[#249cff] max-w-[450px] text-[14px] text-left leading-[17px] mb-[42px]">
+                <Text className="text-[#048FFD] max-w-[450px] text-[14px] text-left leading-[17px] mb-[42px]">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
                   vulputate libero et velit interdum.
                 </Text>
@@ -129,15 +151,14 @@ export default function RdScreenHomePage() {
                 </div>
               </div>
             </div>
-
-            <Text
+            {/* <Text
               as="p"
               className="mt-1 text-[14px] max-w-[450px] leading-[18px] text-white-a700"
             >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
               vulputate libero et velit interdum.
-            </Text>
-
+            </Text> */}
+            {/* 
             <div className="w-full flex gap-2 justify-end px-[30px] mb-[27px] mt-7">
               <Img
                 src="images/img_clock.svg"
@@ -145,12 +166,12 @@ export default function RdScreenHomePage() {
                 className="h-[16px] w-[16px] self-center"
               />
               <div className="w-full max-w-[450px] min-h-[60px] border border-[#fff]/50 px-3 py-4 rounded-[8px]">
-                <Text className="text-[#249cff] text-[14px] text-right leading-[17px]">
+                <Text className="text-[#048FFD] text-[14px] text-right leading-[17px]">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
                   vulputate libero et velit interdum.
                 </Text>
               </div>
-            </div>
+            </div> */}
             <Text
               as="p"
               className="mt-1 text-[14px] max-w-[450px] leading-[18px] text-white-a700"
@@ -158,7 +179,6 @@ export default function RdScreenHomePage() {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
               vulputate libero et velit interdum.
             </Text>
-
             <div className="border border-[#fff] w-full px-2 py-2 max-w-[520px] rounded-[23px] mb-[12px] flex justify-between mt-10">
               <Text
                 className="font-semibold cursor-pointer text-white-a700"
@@ -180,24 +200,81 @@ export default function RdScreenHomePage() {
               </Text>
             </div>
             <div className="w-full max-w-[516px] mt-3 bg-white-a700 flex mb-[24px]">
-              <div className={`w-[172px] h-[1px] ${currentAnswer === 1 ? "bg-[#249cff]" : ""}`}></div>
-              <div className={`w-[172px] h-[1px] ${currentAnswer === 2 ? "bg-[#249cff]" : ""}`}></div>
-              <div className={`w-[172px] h-[1px] ${currentAnswer === 3 ? "bg-[#249cff]" : ""}`}></div>
+              <div
+                className={`w-[172px] h-[1px] ${
+                  currentAnswer === 1 ? "bg-[#249cff]" : ""
+                }`}
+              ></div>
+              <div
+                className={`w-[172px] h-[1px] ${
+                  currentAnswer === 2 ? "bg-[#249cff]" : ""
+                }`}
+              ></div>
+              <div
+                className={`w-[172px] h-[1px] ${
+                  currentAnswer === 3 ? "bg-[#249cff]" : ""
+                }`}
+              ></div>
             </div>
-
             {currentAnswer === 1 && (
               <>
-                <div className="w-full flex gap-2 justify-start">
+                <div className="w-full flex gap-2 justify-start ">
                   {/* <Img
               src="images/img_clock.svg"
               alt="Clock"
               className="h-[16px] w-[16px] self-center"
             /> */}
-                  <div className="w-full max-w-[550px] min-h-[60px] border border-[#fff]/50 px-3 py-4 rounded-[8px]">
-                    <Text className="text-[#249cff] max-w-[450px] text-[14px] text-left leading-[17px] mb-[42px]">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Nunc vulputate libero et velit interdum.
-                    </Text>
+                  <div className="w-full max-w-[550px] min-h-[60px]  flex flex-wrap gap-[30px] border border-[#FFFFFF] rounded-[8px] p-4">
+                    <img
+                      className="w-[75px] h-[64px]"
+                      src="images/Mask group@2x.png"
+                      alt="cahtimg"
+                    />
+                    <img
+                      className="w-[75px] h-[64px]"
+                      src="images/Mask group@2x.png"
+                      alt="cahtimg"
+                    />
+                    <img
+                      className="w-[75px] h-[64px]"
+                      src="images/Mask group@2x.png"
+                      alt="cahtimg"
+                    />
+                    <img
+                      className="w-[75px] h-[64px]"
+                      src="images/Mask group@2x.png"
+                      alt="cahtimg"
+                    />
+                    <img
+                      className="w-[75px] h-[64px]"
+                      src="images/Mask group@2x.png"
+                      alt="cahtimg"
+                    />
+                    <img
+                      className="w-[75px] h-[64px]"
+                      src="images/Mask group@2x.png"
+                      alt="cahtimg"
+                    />
+                    <img
+                      className="w-[75px] h-[64px]"
+                      src="images/Mask group@2x.png"
+                      alt="cahtimg"
+                    />
+                    <img
+                      className="w-[75px] h-[64px]"
+                      src="images/Mask group@2x.png"
+                      alt="cahtimg"
+                    />
+                    <img
+                      className="w-[75px] h-[64px]"
+                      src="images/Mask group@2x.png"
+                      alt="cahtimg"
+                    />
+                    <img
+                      className="w-[75px] h-[64px]"
+                      src="images/Mask group@2x.png"
+                      alt="cahtimg"
+                    />
                   </div>
                 </div>
                 <Text className="mt-3 w-full text-end max-w-[550px] text-[#f0ecec] font-medium">
@@ -211,7 +288,6 @@ export default function RdScreenHomePage() {
                 </Text>
               </>
             )}
-
             {currentAnswer === 2 && (
               <>
                 <div className="w-full flex gap-2 justify-start">
@@ -239,7 +315,6 @@ export default function RdScreenHomePage() {
                 </Text>
               </>
             )}
-
             {currentAnswer === 3 && (
               <>
                 <div className="w-full flex gap-2 justify-start">
@@ -268,7 +343,7 @@ export default function RdScreenHomePage() {
                 </Text>
               </>
             )}
-
+            .{/* searches */}
             <div className="w-full items-center flex gap-[21px] justify-end px-[30px] mb-[27px] mt-7">
               <Text as="p" className="font-medium">
                 Popular Searches:
@@ -286,18 +361,40 @@ export default function RdScreenHomePage() {
                 <Text>Lorem Ipsum</Text>
               </div>
             </div>
-
             <div className="relative w-full border border-[#fff] rounded-t-[12px] input-gradient p-4">
               {/* Images preview area */}
-              <div className="flex space-x-2 overflow-x-auto">
+              <div className="relative">
                 {images.map((image, index) => (
                   <img
                     key={index}
                     src={image}
                     alt={`Thumbnail ${index + 1}`}
-                    className="w-[60px] h-[60px]  rounded-md"
+                    className={`w-[260px] h-[260px] absolute top-[-280px] rounded-md transition-opacity duration-300 ${
+                      hoveredIndex === index ? "opacity-100" : "opacity-0"
+                    }`}
                   />
                 ))}
+
+                <div className="flex space-x-2 overflow-x-auto items-center">
+                  {/* Display only the first 3 images */}
+                  {images.slice(0, maxVisibleImages).map((image, index) => (
+                    <img
+                      key={index}
+                      src={image}
+                      alt={`Thumbnail ${index + 1}`}
+                      className="w-[60px] h-[60px] rounded-md"
+                      onMouseEnter={() => setHoveredIndex(index)}
+                      onMouseLeave={() => setHoveredIndex(null)}
+                    />
+                  ))}
+
+                  {/* Show +more count if there are additional images */}
+                  {images.length > maxVisibleImages && (
+                    <p className="text-[#FFFFFF] text-[14px]">
+                      + {images.length - maxVisibleImages} more
+                    </p>
+                  )}
+                </div>
               </div>
 
               {/* Text input */}
@@ -315,7 +412,7 @@ export default function RdScreenHomePage() {
                   <input
                     type="file"
                     accept="image/*"
-                    multiple 
+                    multiple
                     className="hidden"
                     onChange={handleImageChange}
                   />
