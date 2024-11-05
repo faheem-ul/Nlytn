@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import { Img, Text, Heading } from "../../components";
 
 import Sidebar1 from "../../components/Sidebar1";
+import AllResources from "components/AllResources";
 
 export default function RdScreenHomePage() {
   const [AnswerOne, setAnswerOne] = useState(true);
@@ -59,7 +60,8 @@ export default function RdScreenHomePage() {
       </Helmet>
       <div className="flex w-full items-start bg-black-900">
         <Sidebar1 />
-        <div className="flex-1 px-11 md:px-5 py-[100px]">
+      <AllResources/>
+        <div className="flex-1 px-11 md:px-5 py-[100px] ">
           <div className="flex flex-col items-start rounded-[20px] border border-solid border-white-a700 bg-gray-900 px-5 py-[34px] sm:py-5">
             <div className="flex justify-between w-full">
               <Heading
