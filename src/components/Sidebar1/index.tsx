@@ -11,10 +11,14 @@ interface Props {
 export default function Sidebar1({ ...props }: Props) {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
   const [enabled, setEnabled] = useState(false);
+  const [isWorkspaceOpen, setIsWorkspaceOpen] = useState(false);
 
   // Function to handle menu item click
   const handleMenuItemClick = (itemName: string) => {
     setSelectedItem(itemName);
+  };
+  const toggleWorkspace = () => {
+    setIsWorkspaceOpen(!isWorkspaceOpen);
   };
 
   return (
@@ -111,7 +115,7 @@ export default function Sidebar1({ ...props }: Props) {
           <div className="h-[184px] w-[2px] self-center rounded-[1px] bg-white-a700_19" />
           <div className="relative ml-[-2px] h-[56px] w-[2px] rounded-[1px] bg-white-a700" />
         </div> */}
-        <div className="mr-2 flex flex-col gap-1.5 self-stretch">
+        <div className="mr-2 flex flex-col gap-1.5 self-stretch bg-[#031627] relative z-[10]">
           <SubMenu
             icon={
               <Img
