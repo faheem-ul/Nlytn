@@ -1,13 +1,16 @@
 import { Img, Heading, Text } from "./..";
 import React, { useState } from "react";
+import { Switch } from "@headlessui/react";
 import { MenuItem, SubMenu, Menu, Sidebar } from "react-pro-sidebar";
 
 interface Props {
   className?: string;
+  Allresources: () => void
 }
 
 export default function Sidebar1({ ...props }: Props) {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
+  const [enabled, setEnabled] = useState(false);
 
   // Function to handle menu item click
   const handleMenuItemClick = (itemName: string) => {
@@ -61,7 +64,7 @@ export default function Sidebar1({ ...props }: Props) {
           <SubMenu
             icon={
               <Img
-                src="images/img_mingcute_comment_line.svg"
+                src="images/workspace.svg"
                 alt="Mingcute"
                 className="h-[24px]  w-[24px]"
               />
@@ -135,7 +138,11 @@ export default function Sidebar1({ ...props }: Props) {
                 className="h-[24px] w-[24px]"
               />
             }
-            onClick={() => handleMenuItemClick("DATA INGESTION")}
+            // onClick={() => handleMenuItemClick("DATA INGESTION")}
+            onClick={() => {
+              props.Allresources(); 
+              setSelectedItem("DATA INGESTION"); 
+            }}
             style={
               selectedItem === "DATA INGESTION"
                 ? { color: "#ffffff", backgroundColor: "#048ffd" }
@@ -177,8 +184,9 @@ export default function Sidebar1({ ...props }: Props) {
                 : {}
             }
           >
-            
-              <Text className="bg-[#FF0000] max-w-[12px] max-h-[12px] p-[7px] text-[9px] text-[#FFFFFF] font-bold rounded-full  absolute top-[12px] left-[22px] flex justify-center items-center">1</Text>
+            <Text className="bg-[#FF0000] max-w-[12px] max-h-[12px] p-[7px] text-[9px] text-[#FFFFFF] font-bold rounded-full  absolute top-[12px] left-[22px] flex justify-center items-center">
+              1
+            </Text>
             ALERT
           </MenuItem>
           <MenuItem
@@ -208,11 +216,24 @@ export default function Sidebar1({ ...props }: Props) {
           >
             light mode
           </Heading>
-          <Img
+          {/* <Img
             src="images/switch.png"
             alt="Icon"
             className=" w-[40%] mx-auto mt-2"
-          />
+          /> */}
+          <Switch
+            checked={enabled}
+            onChange={setEnabled}
+            className="group relative flex h-[30px] cursor-pointer rounded-full switch-btn-gradient border border-[#fff] w-[84px] mt-3 p-1 mx-auto duration-200 ease-in-out focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-white/10"
+          >
+            <span
+            
+              aria-hidden="true"
+              className="pointer-events-none inline-block size-5 translate-x-0 rounded-full  ring-0 shadow-lg transition duration-200 ease-in-out group-data-[checked]:translate-x-14"
+            >
+              <img src="images/toggle.svg" alt="" />
+            </span>
+          </Switch>
         </div>
         {/* <div className="mt-1.5 flex w-[40%] rounded-[12px] border-[0.5px] border-solid border-white-a700 bg-gradient mx-auto">
           <div className="h-[18px] w-[18px] rounded-lg bg-white-a700" />
