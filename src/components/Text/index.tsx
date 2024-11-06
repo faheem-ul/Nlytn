@@ -1,7 +1,7 @@
 import React from "react";
 
 const sizes = {
-  textxs: "text-[14px] font-light",
+  textxs: "",
 };
 
 export type TextProps = Partial<{
@@ -21,7 +21,7 @@ const Text: React.FC<React.PropsWithChildren<TextProps>> = ({
   const Component = as || "p";
 
   return (
-    <Component className={`text-gray-500 font-inter ${className} ${sizes[size]}`} {...restProps}>
+    <Component className={` font-inter ${className} ${sizes[size]}`} {...restProps}>
       {children}
     </Component>
   );
