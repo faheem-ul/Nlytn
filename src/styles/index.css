@@ -83,3 +83,16 @@ body {
 linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
 
 }
+
+.switch-btn-gradient{
+  background: radial-gradient(50% 50% at 50% 50%, rgba(7, 246, 249, 0.2) 0%, rgba(93, 64, 164, 0) 100%);
+
+}
+
+.input-with-image {
+  background-image: url('../../public/images/search.svg'); /* Set your image path */
+  background-repeat: no-repeat;
+  background-position: 10px center; /* Adjust positioning */
+  background-size: 20px 20px; /* Adjust image size */
+  padding-left: 40px; /* Add padding to make room for the image */
+}
