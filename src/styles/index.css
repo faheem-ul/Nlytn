@@ -98,6 +98,7 @@ linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
 }
 
 
+
 .bg-gradientmain{
   background: radial-gradient(
     circle, 
@@ -107,3 +108,44 @@ linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
   
 
 }
+
+.signin-bg {
+  background-image: url('../../public/images/signin-net.png'); 
+  background-repeat: no-repeat;
+  background-size: 100% 50%; 
+  background-position: bottom; 
+  width: 100%;
+}
+
+.signin-gradient {
+  /* background: radial-gradient(78.04% 89.35% at 50% 50%, rgba(0, 207, 210, 0.8) 0%, rgba(93, 64, 164, 0) 100%);
+  backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.4);  */
+  background-image: url('../../public/images/signin-div-bg.svg'); 
+  background-repeat: no-repeat;
+  background-size: cover; 
+  background-position: center; 
+  width: 100%;
+}
+
+
+.signin-btn-gradient {
+  background: linear-gradient(90.92deg, #048FFD 16.44%, #52D5FF 101.91%);
+}
+
+.email-input-with-image {
+  background-image: url('../../public/images/email.svg');
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  background-size: 20px 20px;
+  padding-left: 40px;
+}
+
+.password-input-with-image {
+  background-image: url('../../public/images/password.svg');
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  background-size: 20px 20px;
+  padding-left: 40px;
+}
+
