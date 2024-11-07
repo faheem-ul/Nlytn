@@ -1,10 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Heading } from "components/Heading";
 import { Text } from "components/Text";
 
-const SharedThreads = () => {
-const relatedQuestion = [
+const SharedThreads = ({openWorkspace}) => {
+  const navigate = useNavigate();
+
+  const relatedQuestion = [
     "Lorem ipsum dolor sit amet?",
     "Lorem ipsum dolor sit amet?",
     "Lorem ipsum dolor sit amet?",
@@ -16,10 +19,19 @@ const relatedQuestion = [
     "Lorem ipsum dolor sit amet?",
     "Lorem ipsum dolor sit amet?",
     "Lorem ipsum dolor sit amet?",
-]
+  ];
   return (
-    <div className="threads-bg bg-[#010A12CC]/100 bg-opacity-80 w-full mx-auto relative px-5">
+    <div
+      className="threads-bg bg-[#010A12CC]/100 bg-opacity-80 w-full mx-auto relative px-5"
+      onClick={openWorkspace}
+    >
       <div className="absolute inset-0 bg-[#000000] opacity-70"></div>
+      <button className="bg-[#0F2A37] relative  px-3 py-3 rounded-[60px] mt-[46px] ml-[40px]">
+        <div className="flex items-center gap-1">
+          <img src="images/Arrowbaack.svg" alt="" className="w-[20px]" />
+          <Text className="text-white-a700 font-black">Back</Text>
+        </div>
+      </button>
       <div className="w-full flex justify-center h-full items-center min-h-[100vh]">
         <div className="flex px-5 relative w-full max-w-[1144px] justify-center items-center signin-gradient border border-solid border-[#fff]/20 rounded-[20px]">
           <div className="flex flex-col items-start justify-center w-full max-w-[1046px] rounded-[20px] px-5 py-[34px] sm:py-5">
@@ -85,18 +97,16 @@ const relatedQuestion = [
               Related Questions
             </Text>
             <div className="max-h-[100px] w-full overflow-scroll text-white-a700">
-             
-               {
-                relatedQuestion.map((question, index)=>(
-                 
-                    <ul className="list-disc list-inside">
-                    <li key={index}  className="text-[14px] font-[400] mb-[10px] underline px-5" >
-                      {question}
-                    </li>
-                    </ul>
-                ))
-               }
-             
+              {relatedQuestion.map((question, index) => (
+                <ul className="list-disc list-inside">
+                  <li
+                    key={index}
+                    className="text-[14px] font-[400] mb-[10px] underline px-5"
+                  >
+                    {question}
+                  </li>
+                </ul>
+              ))}
             </div>
           </div>
         </div>

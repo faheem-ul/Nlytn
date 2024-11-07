@@ -3,15 +3,16 @@ import { Img } from "components/Img";
 import { Text } from "components/Text";
 import React, { useState } from "react";
 
-const HelpCenter = () => {
+const HelpCenter = ({openWorkspace}) => {
   const [text, setText] = useState("");
 
   return (
-    <div className="flex-1 px-11 md:px-5 py-[100px] relative">
-      <button className="text-white-a700 text-[9px] font-semibold absolute top-5 left-10 bg-[#0F2A37] rounded-full w-[55px] h-[21px] flex justify-center items-center gap-1">
+    <div className="flex-1 px-11 md:px-5 py-[100px] help-center-bg min-h-[100vh] relative">
+       <div className="absolute inset-0 bg-[#000000] opacity-50"></div>
+      <button onClick={openWorkspace} className="text-white-a700 text-[9px] font-semibold absolute top-5 left-10 bg-[#0F2A37] rounded-full w-[55px] h-[21px] flex justify-center items-center gap-1">
         <img src="images/Arrowbaack.svg" alt="" /> Back
       </button>
-      <div className=" flex-col items-start rounded-[20px] border border-solid border-white-a700 bg-gradientmain px-5 py-[34px] sm:py-5">
+      <div className=" flex-col relative items-start rounded-[20px] border border-solid border-[#fff]/60 help-center-bg-div px-5 pt-5 pb-[60px]">
         <div className="flex justify-center gap-2 w-full">
           <Heading
             as="h1"
