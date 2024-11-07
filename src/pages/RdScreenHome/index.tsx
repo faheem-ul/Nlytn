@@ -4,12 +4,10 @@ import { Img, Text, Heading } from "../../components";
 
 import Sidebar1 from "../../components/Sidebar1";
 import AllResources from "components/AllResources";
-import Alert from "components/Alert";
 
 export default function RdScreenHomePage() {
   const [RdScreen, setRdScreen] = useState(true);
   const [ShowAllResources, setShowAllResources] = useState(false);
-  const [ShowAlert, setShowAlert] = useState(false);
   const [AnswerOne, setAnswerOne] = useState(true);
   const [AnswerTwo, setAnswerTwo] = useState(false);
   const [AnswerThree, setAnswerThree] = useState(false);
@@ -58,13 +56,6 @@ export default function RdScreenHomePage() {
   const handleAllResouces = () => {
     console.log("something")
     setShowAllResources(true);
-    setShowAlert(false);
-    setRdScreen(false);
-  }
-  const handleAlert = () => {
-    console.log("something")
-    setShowAllResources(false);
-    setShowAlert(true);
     setRdScreen(false);
   }
   const handleShowRdScreen = () =>{
@@ -84,26 +75,18 @@ export default function RdScreenHomePage() {
         />
       </Helmet>
       <div className="flex w-full items-start bg-black-900" id="RdScreenHome">
-        <Sidebar1 Allresources={handleAllResouces} Alert={handleAlert} />
-       
+        <Sidebar1 Allresources = {handleAllResouces} />
         {
-          ShowAlert && (
-            <>
-            <Alert id="#alert" showRdScreen={handleAlert} />
-            </>
-          )
-        }
-        {/* {
           ShowAllResources && (
             <>
             <AllResources id="#allResources" showRdScreen={handleShowRdScreen} />
             </>
           )
-        } */}
+        }
 
         {
           RdScreen && (
-            <div className="flex-1 px-11 md:px-5 py-[100px] hidden">
+            <div className="flex-1 px-11 md:px-5 py-[100px] ">
             <div className="flex flex-col items-start rounded-[20px] border border-solid border-white-a700 bg-gray-900 px-5 py-[34px] sm:py-5">
               <div className="flex justify-between w-full">
                 <Heading

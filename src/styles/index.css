@@ -96,3 +96,14 @@ linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
   background-size: 20px 20px; /* Adjust image size */
   padding-left: 40px; /* Add padding to make room for the image */
 }
+
+
+.bg-gradientmain{
+  background: radial-gradient(
+    circle, 
+    #01d8db57 0%,   /* #00CFD2 at 100% opacity */
+    rgba(93, 64, 164, 0) 120%   /* #5D40A4 at 0% opacity */
+  );
+  
+
+}
