@@ -6,6 +6,7 @@ import { MenuItem, SubMenu, Menu, Sidebar } from "react-pro-sidebar";
 interface Props {
   className?: string;
   Allresources: () => void
+  Alert: () => void
 }
 
 export default function Sidebar1({ ...props }: Props) {
@@ -181,7 +182,10 @@ export default function Sidebar1({ ...props }: Props) {
                 className="h-[20px] w-[16px]"
               />
             }
-            onClick={() => handleMenuItemClick("alert")}
+            onClick={() => {
+              props.Alert(); 
+              setSelectedItem("alert"); 
+            }}
             style={
               selectedItem === "alert"
                 ? { color: "#ffffff", backgroundColor: "#048ffd" }
