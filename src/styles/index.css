@@ -136,3 +136,35 @@ linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
   background-size: 20px 20px;
   padding-left: 40px;
 }
+
+.card-bg {
+  background-image: url('../../public/images/cardbg.svg'); 
+  background-repeat: no-repeat;
+  background-size: cover; 
+  background-position: center; 
+  width: 100%;
+}
+
+
+.workspace-bg {
+  background-image: url('../../public/images/signin-net.png'); 
+  background-repeat: no-repeat;
+  background-size: 100% 20%; 
+  background-position: bottom; 
+  width: 100%;
+}
+
+.threads-bg {
+  background-image: url('../../public/images/signin-net.png'); 
+  background-repeat: no-repeat;
+  background-size: 100% 45%; 
+  background-position: bottom; 
+  width: 100%;
+}
+
+.threads-input-with-image {
+  background-image: url('../../public/images/input-bg.svg');
+  background-repeat: no-repeat;
+  background-position: calc(100% - 20px) center; 
+  background-size: 30px 30px;
+}

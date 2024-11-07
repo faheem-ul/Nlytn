@@ -6,20 +6,19 @@ import { MenuItem, SubMenu, Menu, Sidebar } from "react-pro-sidebar";
 interface Props {
   className?: string;
   Allresources: () => void
+  Workspace: ()=> void
+  SharedThreads: ()=> void
 }
 
 export default function Sidebar1({ ...props }: Props) {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
   const [enabled, setEnabled] = useState(false);
-  const [isWorkspaceOpen, setIsWorkspaceOpen] = useState(false);
 
   // Function to handle menu item click
   const handleMenuItemClick = (itemName: string) => {
     setSelectedItem(itemName);
   };
-  const toggleWorkspace = () => {
-    setIsWorkspaceOpen(!isWorkspaceOpen);
-  };
+
 
   return (
     <Sidebar
@@ -74,7 +73,10 @@ export default function Sidebar1({ ...props }: Props) {
               />
             }
             label="Workspace"
-            onClick={() => handleMenuItemClick("Workspace")}
+            onClick={() =>{
+              setSelectedItem("Workspace")
+              props.Workspace()
+            }}
             style={
               selectedItem === "Workspace"
                 ? { color: "#ffffff", backgroundColor: "#048ffd" }
@@ -125,7 +127,10 @@ export default function Sidebar1({ ...props }: Props) {
               />
             }
             label="Shared THREADS"
-            onClick={() => handleMenuItemClick("Shared")}
+            onClick={()=>{
+              setSelectedItem("Shared")
+              props.SharedThreads()
+            }}
             style={
               selectedItem === "Shared"
                 ? { color: "#ffffff", backgroundColor: "#048ffd" }
