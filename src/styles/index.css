@@ -181,3 +181,28 @@ linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
   background-size: 30px 30px;
 }
 
+
+.help-center-bg{
+  background-image: url('../../public/images/signin-net.png'); 
+  background-repeat: no-repeat;
+  background-size: 100% 45%; 
+  background-position: bottom; 
+  width: 100%;
+}
+
+
+.help-center-bg-div {
+  background-image: url('../../public/images/help-center-bg.svg'); 
+  background-repeat: no-repeat;
+  background-size: cover; 
+  background-position: center; 
+  width: 100%;
+}
+
+.modal-bg {
+  background-image: url('../../public/images/modal-bg.svg'); 
+  background-repeat: no-repeat;
+  background-size: cover; 
+  background-position: center; 
+  width: 100%;
+}

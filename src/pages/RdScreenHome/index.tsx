@@ -6,42 +6,86 @@ import Sidebar1 from "../../components/Sidebar1";
 import AllResources from "components/AllResources";
 import Worksapce from "components/Workspace";
 import SharedThreads from "components/SharedThreads";
+import DataIngestion from "components/DataIngestion";
+import Alert from "components/Alert";
+import HelpCenter from "components/HelpCenter";
 
 export default function RdScreenHomePage() {
-  const [RdScreen, setRdScreen] = useState(false);
+  // const [RdScreen, setRdScreen] = useState(false);
   const [ShowAllResources, setShowAllResources] = useState(false);
   const [ShowWorkspace, setShowWorkspace] = useState(true);
   const [ShowThreads, setShowThreads] = useState(false)
+  const [ShowDataIngestion, setShowDataIngestion] = useState(false)
+  const [ShowAlert, setShowAlert] = useState(false)
+  const [ShowHelpCenter, setShowHelpCenter] = useState(false)
 
 
   const handleAllResouces = () => {
     // console.log("something")
-    setShowAllResources(true);
-    setRdScreen(false);
-    setShowWorkspace(false)
-  }
-  const handleShowRdScreen = () =>{
-    console.log("antghing")
     setShowAllResources(false);
-    setRdScreen(true);
+    // setRdScreen(false);
     setShowWorkspace(false)
     setShowThreads(false)
+    setShowDataIngestion(true)
+    setShowAlert(false)
+    setShowHelpCenter(false)
+    
+  }
+  const handleShowRdScreen = () =>{
+    // console.log("antghing")
+    setShowAllResources(false);
+    // setRdScreen(true);
+    setShowWorkspace(false)
+    setShowThreads(false)
+    setShowDataIngestion(false)
+    setShowAlert(false)
+    setShowHelpCenter(false)
   }
 
   const handleWorkspace = () => {
     setShowWorkspace(true);
-    setRdScreen(false);
+    // setRdScreen(false);
     setShowAllResources(false)
     setShowThreads(false)
+    setShowDataIngestion(false)
+    setShowAlert(false)
+    setShowHelpCenter(false)
   }
 
   const handleSharedThreads = ()=>{
     // console.log("something")
     setShowAllResources(false);
-    setRdScreen(false);
+    // setRdScreen(false);
     setShowWorkspace(false)
     setShowThreads(true)
+    setShowDataIngestion(false)
+    setShowAlert(false)
+    setShowHelpCenter(false)
     // navigate to shared threads page
+  }
+
+  const handleAlert = ()=>{
+    // console.log("something")
+    setShowAllResources(false);
+    // setRdScreen(false);
+    setShowWorkspace(false)
+    setShowThreads(false)
+    setShowDataIngestion(false)
+    setShowAlert(true)
+    setShowHelpCenter(false)
+    // navigate to alert page
+  }
+
+  const handleHelpCenter = ()=>{
+    // console.log("something")
+    setShowAllResources(false);
+    // setRdScreen(false);
+    setShowWorkspace(false)
+    setShowThreads(false)
+    setShowDataIngestion(false)
+    setShowAlert(false)
+    setShowHelpCenter(true)
+    // navigate to help center page
   }
 
 
@@ -55,7 +99,7 @@ export default function RdScreenHomePage() {
         />
       </Helmet>
       <div className="flex w-full items-start bg-black-900" id="RdScreenHome">
-        <Sidebar1 Allresources = {handleAllResouces} Workspace={handleWorkspace} SharedThreads={handleSharedThreads} />
+        <Sidebar1 Allresources = {handleAllResouces} Workspace={handleWorkspace} SharedThreads={handleSharedThreads} Alert={handleAlert} HelpCenter={handleHelpCenter}/>
         {
           ShowWorkspace && (
             <Worksapce />
@@ -72,8 +116,30 @@ export default function RdScreenHomePage() {
         {
           ShowThreads && (
            <>
-           <SharedThreads/>
+           <SharedThreads openWorkspace={handleWorkspace}/>
            </>
+          )
+        }
+        {
+          ShowAlert && (
+           <>
+           <Alert openWorkspace={handleWorkspace}/>
+           </>
+          )
+        }
+        {
+          ShowDataIngestion && (
+           <>
+           <DataIngestion openWorkspace={handleWorkspace}/>
+           </>
+          )
+        }
+
+        {
+          ShowHelpCenter && (
+            <>
+            <HelpCenter openWorkspace={handleWorkspace}/>
+            </>
           )
         }
 

@@ -8,6 +8,8 @@ interface Props {
   Allresources: () => void
   Workspace: ()=> void
   SharedThreads: ()=> void
+  Alert: () => void
+  HelpCenter: () => void
 }
 
 export default function Sidebar1({ ...props }: Props) {
@@ -186,7 +188,10 @@ export default function Sidebar1({ ...props }: Props) {
                 className="h-[20px] w-[16px]"
               />
             }
-            onClick={() => handleMenuItemClick("alert")}
+            onClick={() =>{
+              setSelectedItem("alert")
+              props.Alert()
+            }}
             style={
               selectedItem === "alert"
                 ? { color: "#ffffff", backgroundColor: "#048ffd" }
@@ -206,7 +211,10 @@ export default function Sidebar1({ ...props }: Props) {
                 className="h-[24px] w-[24px]"
               />
             }
-            onClick={() => handleMenuItemClick("helpcenter")}
+            onClick={() => {
+              props.HelpCenter(); 
+              setSelectedItem("helpcenter");
+            }}
             style={
               selectedItem === "helpcenter"
                 ? { color: "#ffffff", backgroundColor: "#048ffd" }

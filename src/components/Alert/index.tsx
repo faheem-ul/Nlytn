@@ -129,10 +129,10 @@ type Card = {
   
 interface props {
   id?: string;
-  showRdScreen: () => void;
+  openWorkspace: () => void;
 }
 
-const Alert: React.FC<props> = ({ id, showRdScreen }) => {
+const Alert: React.FC<props> = ({ id, openWorkspace }) => {
 //   const images = ["images/Mask.png"]; 
   const imagesPerPage = 5;
   const [currentPage, setCurrentPage] = useState(1);
@@ -187,11 +187,11 @@ const Alert: React.FC<props> = ({ id, showRdScreen }) => {
           className="w-[18.67px] h-[19.04px] cursor-pointer"
           src="images/cross.png"
           alt=""
-          onClick={showRdScreen}
+          onClick={openWorkspace}
         />
       </div>
       <Text className="text-[32px] font-semibold text-[#fff] leading-[38.73px] mt-2">
-        All Sources (5 Documents)
+      Alerts & Notifications
       </Text>
       {showUploadDiv && (
         <div className="w-full max-w-[165px] bg-[#fff] px-[10px] mr-14 rounded-[8px] py-2 ml-auto ">
