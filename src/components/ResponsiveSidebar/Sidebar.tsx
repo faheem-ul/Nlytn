@@ -9,14 +9,14 @@ import { MenuItem, SubMenu, Menu, Sidebar } from "react-pro-sidebar";
 
 interface Props {
   className?: string;
-  Allresources?: () => void
-  Workspace?: ()=> void
-  SharedThreads?: ()=> void
-  Alert?: () => void
-  HelpCenter?: () => void
+//   Allresources?: () => void
+//   Workspace?: ()=> void
+//   SharedThreads?: ()=> void
+//   Alert?: () => void
+//   HelpCenter?: () => void
 }
 
-export default function Sidebar1({ ...props }: Props) {
+export default function SidebarMob({ ...props }: Props) {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
   const [enabled, setEnabled] = useState(false);
   const [visible, setVisible] = useState(true); 
@@ -37,12 +37,12 @@ export default function Sidebar1({ ...props }: Props) {
     <Sidebar
         {...props}
         style={{
-          width: visible ? "254px" : "0",
+          width: visible ? "100%" : "0",
           opacity: visible ? 1 : 0,
           overflow: "hidden",
           transition: "width 0.5s ease, opacity 0.5s ease", 
         }}
-        className={`${props.className} flex flex-col h-screen pt-6 top-0 mob:hidden px-1.5 sm:pt-5 !border-gray-800 !border-r !border-solid bg-gray-900 !sticky overflow-auto`}
+        className={`${props.className} flex flex-col h-screen pt-6 mt-10  px-1.5 sm:pt-5 !border-gray-800 !border-r !border-solid overflow-auto`}
       >
       <div className="flex gap-3 items-center border border-[#FFFFFF] rounded-[8px] p-[10px] w-full max-w-[200px] mx-auto">
         <div className="relative">
@@ -93,7 +93,7 @@ export default function Sidebar1({ ...props }: Props) {
             label="Workspace"
             onClick={() =>{
               setSelectedItem("Workspace")
-              props.Workspace()
+            //   props.Workspace()
             }}
             style={
               selectedItem === "Workspace"
@@ -147,7 +147,7 @@ export default function Sidebar1({ ...props }: Props) {
             label="Shared THREADS"
             onClick={()=>{
               setSelectedItem("Shared")
-              props.SharedThreads()
+            //   props.SharedThreads()
             }}
             style={
               selectedItem === "Shared"
@@ -167,7 +167,7 @@ export default function Sidebar1({ ...props }: Props) {
             }
             // onClick={() => handleMenuItemClick("DATA INGESTION")}
             onClick={() => {
-              props.Allresources(); 
+            //   props.Allresources(); 
               setSelectedItem("DATA INGESTION"); 
             }}
             style={
@@ -206,7 +206,7 @@ export default function Sidebar1({ ...props }: Props) {
             }
             onClick={() =>{
               setSelectedItem("alert")
-              props.Alert()
+            //   props.Alert()
             }}
             style={
               selectedItem === "alert"
@@ -228,7 +228,7 @@ export default function Sidebar1({ ...props }: Props) {
               />
             }
             onClick={() => {
-              props.HelpCenter(); 
+            //   props.HelpCenter(); 
               setSelectedItem("helpcenter");
             }}
             style={
@@ -285,8 +285,10 @@ export default function Sidebar1({ ...props }: Props) {
           </MenuItem>
         
           <div className="h-[1px] w-full bg-[#FFFFFF33] my-2 "></div>
-          <div className="flex flex-row-reverse items-center justify-between w-full mt-6">
-            <FaChevronLeft className="text-white-a700 text-[20px] cursor-pointer"  onClick={toggleSidebar}/>
+          <div className="flex flex-row-reverse items-center justify-center w-full mt-6">
+            <FaChevronLeft className="text-white-a700 text-[20px] cursor-pointer" 
+            // onClick={toggleSidebar}
+            />
           <Img
               src="images/logo.svg"
               alt="Hide Sidebar"
@@ -297,12 +299,12 @@ export default function Sidebar1({ ...props }: Props) {
         </div>
       </Menu>
     </Sidebar>
-    {!visible && (
+    {/* {!visible && (
       <div className="bg-[#fff] fixed cursor-pointer z-[10] bottom-0 top-[700px] w-[40px] h-[50px] py-10 rounded-r-[100px] flex items-center ">
       <FaChevronRight className="text-[#000] text-[30px]" onClick={toggleSidebar} />
        
         </div>
-      )}
+      )} */}
    </>
   );
 }
