@@ -206,3 +206,18 @@ linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
   background-position: center; 
   width: 100%;
 }
+
+@media only screen and (max-width: 768px) {
+ .workspace-bg{
+  background-image: none;
+ }
+ .threads-bg{
+  background-image: none;
+ }
+ .threads-input-with-image{
+  background-image: none;
+ }
+ .help-center-bg{
+  background-image: none;
+ }
+}
