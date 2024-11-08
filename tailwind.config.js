@@ -3,7 +3,7 @@ module.exports = {
   content: ["./src/**/**/*.{js,ts,jsx,tsx,html,mdx}", "./src/**/*.{js,ts,jsx,tsx,html,mdx}"],
   darkMode: "class",
   theme: {
-    screens: { md: { max: "1050px" }, sm: { max: "550px" } },
+    
     extend: {
       colors: {
         black: { 900: "var(--black_900)" },
@@ -18,6 +18,14 @@ module.exports = {
         indigo: { 50: "var(--indigo_50)", 600: "var(--indigo_600)" },
         light_blue: { a700: "var(--light_blue_a700)" },
         white: { a700: "var(--white_a700)", a700_19: "var(--white_a700_19)" },
+      },
+      screens: {
+        "2xl": { max: "1535px" },
+        xl: { max: "1279px" },
+        lg: { max: "1023px" },
+        navsize: { max: "1180px" },
+        tab: { max: "991px" },
+        mob: { max: "768px" },
       },
       boxShadow: {},
       fontFamily: { inter: "Inter" },
