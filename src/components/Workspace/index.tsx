@@ -93,10 +93,10 @@ const Worksapce = () => {
   const maxVisibleImages = 3;
 
   return (
-    <div className="workspace-bg bg-[#010A12CC]/100 bg-opacity-80 w-full min-h-[100vh] h-full relative ">
+    <div className="workspace-bg bg-[#010A12CC]/100 bg-opacity-80 w-full min-h-[100vh] h-full relative px-5">
       <div className="absolute inset-0 bg-[#000000] opacity-70"></div>
       <ResponsiveSidebar />
-      <div className="flex-1 px-8 mob:px-5 pb-[100px] mob:py-10 relative mt-16 mob:mt-0">
+      <div className="flex-1 mob:px-0 px-8 pb-[100px] mob:py-10 relative mt-16 mob:mt-0">
         <div className="flex flex-col items-start rounded-[20px] border border-solid border-white-a700 bg-gray-900 px-5 py-[34px]">
           <div className="flex justify-between w-full">
             <Heading

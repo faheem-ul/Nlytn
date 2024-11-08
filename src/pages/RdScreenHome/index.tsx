@@ -98,7 +98,7 @@ export default function RdScreenHomePage() {
           content="Web site created using create-react-app"
         />
       </Helmet>
-      <div className="flex w-full items-start bg-black-900" id="RdScreenHome">
+      <div className="flex w-full items-start bg-[#000]" id="RdScreenHome">
         <Sidebar1 Allresources = {handleAllResouces} Workspace={handleWorkspace} SharedThreads={handleSharedThreads} Alert={handleAlert} HelpCenter={handleHelpCenter}/>
         {
           ShowWorkspace && (

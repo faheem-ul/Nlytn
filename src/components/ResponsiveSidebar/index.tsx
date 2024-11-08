@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 
 import Drawer from "../ui/Drawer";
+import SidebarMob from "./Sidebar";
 
 const ResponsiveSidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -83,66 +84,7 @@ const ResponsiveSidebar = () => {
                 <div className="relative z-40">
                   <Drawer isOpen={isOpen} onClose={onClose}>
                     <div className="flex items-center h-full w-full ">
-                      <ul className="font-normal  w-full  mob:left-0 mob:w-full z-50 flex flex-col py-4 md:p-0 mt-4 gap-[0px]  rtl:space-x-reverse md:mt-0 ">
-                        <a
-                          href="/"
-                          className="block  text-[20px] font-inter font-medium leading-[25.5px] text-[#FFFFFF]  "
-                        >
-                          <li className="flex justify-center py-[15px] list-items">
-                            Home
-                          </li>
-                        </a>
-                        <hr className="h-px  bg-[#C0C0C0] border-0 dark:bg-[#C0C0C0]"></hr>
-
-                        <a
-                          href="/"
-                          className="block  text-[20px] font-inter font-medium leading-[25.5px] text-[#FFFFFF]  "
-                        >
-                          <li className="flex justify-center py-[15px] list-items">
-                          Token
-                          </li>
-                        </a>
-                        <hr className="h-px  bg-[#C0C0C0] border-0 dark:bg-[#C0C0C0]"></hr>
-
-                        <a
-                          href="/"
-                          className="block  text-[20px] font-inter font-medium leading-[25.5px] text-[#FFFFFF]  "
-                        >
-                          <li className="flex justify-center py-[15px] list-items">
-                          Pre-Sale
-                          </li>
-                        </a>
-                        <hr className="h-px  bg-[#C0C0C0] border-0 dark:bg-[#C0C0C0]"></hr>
-
-                        <a
-                          href="/"
-                          className="block  text-[20px] font-inter font-medium leading-[25.5px] text-[#FFFFFF]  "
-                        >
-                          <li className="flex justify-center py-[15px] list-items">
-                            Roadmap
-                          </li>
-                        </a>
-                        <hr className="h-px  bg-[#C0C0C0] border-0 dark:bg-[#C0C0C0]"></hr>
-
-                        <a
-                          href="/"
-                          className="block  text-[20px] font-inter font-medium leading-[25.5px] text-[#FFFFFF]  "
-                        >
-                          <li className="flex justify-center py-[15px] list-items">
-                          Whitepaper
-                          </li>
-                        </a>
-                        <hr className="h-px  bg-[#C0C0C0] border-0 dark:bg-[#C0C0C0]"></hr>
-
-                        <a
-                          href="/"
-                          className="block  text-[20px] font-inter font-medium leading-[25.5px] text-[#FFFFFF]  "
-                        >
-                          <li className="flex justify-center py-[15px] list-items">
-                          Whitelist
-                          </li>
-                        </a>
-                      </ul>
+                    <SidebarMob/>
                     </div>
                   </Drawer>
                 </div>
