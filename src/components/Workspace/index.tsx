@@ -6,12 +6,59 @@ import { Img } from "components/Img";
 
 import useDisclosure from "components/hooks/useDisclosure";
 import MyModal from "components/ui/Modal";
+import ResponsiveSidebar from "components/ResponsiveSidebar";
 
 const Worksapce = () => {
   const [images, setImages] = useState([]);
   const [text, setText] = useState("");
   const [currentAnswer, setCurrentAnswer] = useState(1);
+  //   const totalAnswers = 4;
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const answers = [
+    <div className="w-full flex gap-2 justify-start">
+      <div className="w-full max-w-[550px] min-h-[60px] flex flex-wrap gap-[30px] border border-[#FFFFFF] rounded-[8px] p-4">
+        {Array(10)
+          .fill(0)
+          .map((_, index) => (
+            <img
+              key={index}
+              className="w-[75px] h-[64px]"
+              src="images/Mask group@2x.png"
+              alt="chatimg"
+            />
+          ))}
+      </div>
+    </div>,
+    <div className="w-full flex gap-2 justify-start">
+      <div className="w-full max-w-[550px] min-h-[60px] border border-[#fff]/50 px-3 py-4 rounded-[8px]">
+        <Text className="text-[#249cff] max-w-[450px] text-[14px] text-left leading-[17px] mb-[42px]">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+          vulputate libero et velit interdum.
+        </Text>
+      </div>
+    </div>,
+    <div className="w-full flex gap-2 justify-start">
+      <div className="w-full max-w-[550px] min-h-[60px] border border-[#fff]/50 px-3 py-4 rounded-[8px]">
+        <Text className="text-[#249cff] max-w-[450px] text-[14px] text-left leading-[17px] mb-[42px]">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+          vulputate libero et velit interdum.
+        </Text>
+      </div>
+    </div>,
+  ];
+
+  const handleNext = () => {
+    if (currentAnswer < answers.length) {
+      setCurrentAnswer(currentAnswer + 1);
+    }
+  };
+
+  const handlePrevious = () => {
+    if (currentAnswer > 1) {
+      setCurrentAnswer(currentAnswer - 1);
+    }
+  };
   const workspacecards = [
     {
       imageURl: "images/card.svg",
@@ -35,18 +82,6 @@ const Worksapce = () => {
     },
   ];
 
-  const handleNext = () => {
-    if (currentAnswer < 3) {
-      setCurrentAnswer(currentAnswer + 1);
-    }
-  };
-
-  const handlePrevious = () => {
-    if (currentAnswer > 1) {
-      setCurrentAnswer(currentAnswer - 1);
-    }
-  };
-
   // Handle multiple image selections
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files) as File[]; // Cast files to an array of File objects
@@ -58,18 +93,19 @@ const Worksapce = () => {
   const maxVisibleImages = 3;
 
   return (
-    <div className="workspace-bg bg-[#010A12CC]/100 bg-opacity-80 w-full min-h-[100vh] h-full relative">
+    <div className="workspace-bg bg-[#010A12CC]/100 bg-opacity-80 w-full min-h-[100vh] h-full relative ">
       <div className="absolute inset-0 bg-[#000000] opacity-70"></div>
-      <div className="flex-1 px-11 md:px-5 py-[100px] relative">
-        <div className="flex flex-col items-start rounded-[20px] border border-solid border-white-a700 bg-gray-900 px-5 py-[34px] sm:py-5">
+      <ResponsiveSidebar />
+      <div className="flex-1 px-8 mob:px-5 pb-[100px] mob:py-10 relative mt-16 mob:mt-0">
+        <div className="flex flex-col items-start rounded-[20px] border border-solid border-white-a700 bg-gray-900 px-5 py-[34px]">
           <div className="flex justify-between w-full">
             <Heading
               as="h1"
-              className="text-shadow-ts text-[36px] font-bold text-white-a700 md:text-[34px] sm:text-[32px]"
+              className="text-shadow-ts mob:w-full text-[36px] mob:text-[20px] mob:text-center font-bold text-white-a700 md:text-[34px] sm:text-[32px]"
             >
               How Can We Help You Today?
             </Heading>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 mob:hidden">
               <button
                 className="w-[82px] h-[46px] rounded-[8px] bg-[#048FFD] text-[#ffffff] font-semibold text-[14px] font-inter"
                 onClick={onOpen}
@@ -112,11 +148,18 @@ const Worksapce = () => {
                 </div>
 
                 <div className="flex justify-between items-center">
-                <img src="images/group-persons.svg" alt="" />    
-                <div className="flex gap-5 items-center">
-                <Text className=" font-semibold text-[16px] text-white-a700">Cancel</Text>
-                <button className="w-[117px] h-[51px] signin-btn-gradient rounded-[5px] text-white-a700 font-semibold">Send</button>
-                </div>
+                  <img src="images/group-persons.svg" alt="" />
+                  <div className="flex gap-5 items-center">
+                    <Text
+                      className=" font-semibold text-[16px] text-white-a700 cursor-pointer"
+                      onClick={onClose}
+                    >
+                      Cancel
+                    </Text>
+                    <button className="w-[117px] h-[51px] signin-btn-gradient rounded-[5px] text-white-a700 font-semibold">
+                      Send
+                    </button>
+                  </div>
                 </div>
               </MyModal>
               <button className="max-w-[235px] h-[46px] rounded-[8px] text-[#fff] bg-[#048FFD] px-3">
@@ -134,12 +177,12 @@ const Worksapce = () => {
           </div>
           <Text
             as="p"
-            className="mt-2 w-[44%] text-[14px]  font-light leading-[128%] text-gray-500 md:w-full"
+            className="mt-2 w-[44%] mob:text-[12px] mob:w-full mob:text-center text-[14px]  font-light leading-[128%] text-gray-500 md:w-full"
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
             vulputate libero et velit interdum.
           </Text>
-          <div className="w-full flex gap-2 justify-end px-[30px] mb-[27px] mt-7">
+          <div className="w-full flex gap-2 justify-end px-[30px] mob:px-0 mb-[27px] mt-7">
             <Img
               src="images/img_clock.svg"
               alt="Clock"
@@ -147,25 +190,7 @@ const Worksapce = () => {
             />
             {/* img */}
             <div>
-              {/* <div className="flex flex-wrap gap-[15px] justify-end mb-2">
-                    <img
-                      className="w-[89.56px] h-[76.34px]"
-                      src="images/Mask group@2x.png"
-                      alt="cahtimg"
-                    />
-                    <img
-                      className="w-[89.56px] h-[76.34px]"
-                      src="images/Mask group@2x.png"
-                      alt="cahtimg"
-                    />
-                    <img
-                      className="w-[89.56px] h-[76.34px]"
-                      src="images/Mask group@2x.png"
-                      alt="cahtimg"
-                    />
-                  </div> */}
-
-              <div className="w-full max-w-[450px] min-h-[60px] border border-[#fff]/50 px-3 py-4 rounded-[8px]">
+              <div className="w-full max-w-[450px] mob:max-w-[215px] min-h-[60px] border border-[#fff]/50 px-3 py-4 rounded-[8px]">
                 <Text className="text-[#048FFD] text-[14px] text-right leading-[17px]">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
                   vulputate libero et velit interdum.
@@ -174,14 +199,9 @@ const Worksapce = () => {
             </div>
           </div>
           {/* text edit */}
-          <div className="w-full flex gap-2 justify-center px-[30px] mb-[27px]">
-            {/* <Img
-                  src="images/img_clock.svg"
-                  alt="Clock"
-                  className="h-[16px] w-[16px] self-center"
-                /> */}
-            <div className="w-full max-w-[550px] min-h-[60px] border border-[#fff]/50 px-3 py-4 rounded-[8px]">
-              <Text className="text-[#048FFD] max-w-[450px] text-[14px] text-left leading-[17px] mb-[42px]">
+          <div className="w-full flex gap-2 justify-center mob:justify-start px-[30px] mob:px-0  mb-[27px]">
+            <div className="w-full max-w-[550px] mob:max-w-[215px] min-h-[60px] border border-[#fff]/50 px-3 py-4 rounded-[8px]">
+              <Text className="text-[#048FFD] max-w-[450px] text-[14px] text-left leading-[17px] mb-[42px] mob:mb-2">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
                 vulputate libero et velit interdum.
               </Text>
@@ -198,212 +218,67 @@ const Worksapce = () => {
               </div>
             </div>
           </div>
-          {/* <Text
-                as="p"
-                className="mt-1 text-[14px] max-w-[450px] leading-[18px] text-white-a700"
-              >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-                vulputate libero et velit interdum.
-              </Text> */}
-          {/* 
-              <div className="w-full flex gap-2 justify-end px-[30px] mb-[27px] mt-7">
-                <Img
-                  src="images/img_clock.svg"
-                  alt="Clock"
-                  className="h-[16px] w-[16px] self-center"
-                />
-                <div className="w-full max-w-[450px] min-h-[60px] border border-[#fff]/50 px-3 py-4 rounded-[8px]">
-                  <Text className="text-[#048FFD] text-[14px] text-right leading-[17px]">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-                    vulputate libero et velit interdum.
-                  </Text>
-                </div>
-              </div> */}
           <Text
             as="p"
-            className="mt-1 text-[14px] max-w-[450px] leading-[18px] text-white-a700"
+            className="mt-1 text-[14px] max-w-[450px] mob:max-w-[215px] leading-[18px] text-white-a700"
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
             vulputate libero et velit interdum.
           </Text>
-          <div className="border border-[#fff] w-full px-2 py-2 max-w-[520px] rounded-[23px] mb-[12px] flex justify-between mt-10">
-            <Text
-              className="font-semibold cursor-pointer text-white-a700"
-              onClick={() => setCurrentAnswer(1)}
-            >
-              Answer 1
-            </Text>
-            <Text
-              className="font-semibold cursor-pointer text-white-a700"
-              onClick={() => setCurrentAnswer(2)}
-            >
-              Answer 2
-            </Text>
-            <Text
-              className="font-semibold cursor-pointer text-white-a700"
-              onClick={() => setCurrentAnswer(3)}
-            >
-              Answer 3
+          <div className="max-w-[500px]">
+            <div className="border border-[#fff] w-full px-2 py-2 max-w-[520px] rounded-[23px] mb-[12px] flex justify-evenly mt-10">
+              {answers.map((_, index) => (
+                <Text
+                  key={index}
+                  className={`font-semibold cursor-pointer text-white-a700 ${
+                    currentAnswer === index + 1 ? "text-[#249cff]" : ""
+                  }`}
+                  onClick={() => setCurrentAnswer(index + 1)}
+                >
+                  Answer {index + 1}
+                </Text>
+              ))}
+            </div>
+
+            <div className="w-full max-w-[516px] mt-3 bg-white-a700 flex mb-[24px]">
+              {answers.map((_, index) => (
+                <div
+                  key={index}
+                  className={`flex-1 h-[1px] ${
+                    currentAnswer === index + 1
+                      ? "bg-[#249cff]"
+                      : "bg-transparent"
+                  }`}
+                ></div>
+              ))}
+            </div>
+
+            {answers[currentAnswer - 1]}
+
+            <Text className="mt-3 w-full text-end max-w-[550px] text-[#f0ecec] font-medium">
+              <span className="cursor-pointer" onClick={handlePrevious}>
+                &lt;
+              </span>{" "}
+              Answer {currentAnswer}/{answers.length}{" "}
+              <span className="cursor-pointer" onClick={handleNext}>
+                &gt;
+              </span>
             </Text>
           </div>
-          <div className="w-full max-w-[516px] mt-3 bg-white-a700 flex mb-[24px]">
-            <div
-              className={`w-[172px] h-[1px] ${
-                currentAnswer === 1 ? "bg-[#249cff]" : ""
-              }`}
-            ></div>
-            <div
-              className={`w-[172px] h-[1px] ${
-                currentAnswer === 2 ? "bg-[#249cff]" : ""
-              }`}
-            ></div>
-            <div
-              className={`w-[172px] h-[1px] ${
-                currentAnswer === 3 ? "bg-[#249cff]" : ""
-              }`}
-            ></div>
-          </div>
-          {currentAnswer === 1 && (
-            <>
-              <div className="w-full flex gap-2 justify-start ">
-                {/* <Img
-                src="images/img_clock.svg"
-                alt="Clock"
-                className="h-[16px] w-[16px] self-center"
-              /> */}
-                <div className="w-full max-w-[550px] min-h-[60px]  flex flex-wrap gap-[30px] border border-[#FFFFFF] rounded-[8px] p-4">
-                  <img
-                    className="w-[75px] h-[64px]"
-                    src="images/Mask group@2x.png"
-                    alt="cahtimg"
-                  />
-                  <img
-                    className="w-[75px] h-[64px]"
-                    src="images/Mask group@2x.png"
-                    alt="cahtimg"
-                  />
-                  <img
-                    className="w-[75px] h-[64px]"
-                    src="images/Mask group@2x.png"
-                    alt="cahtimg"
-                  />
-                  <img
-                    className="w-[75px] h-[64px]"
-                    src="images/Mask group@2x.png"
-                    alt="cahtimg"
-                  />
-                  <img
-                    className="w-[75px] h-[64px]"
-                    src="images/Mask group@2x.png"
-                    alt="cahtimg"
-                  />
-                  <img
-                    className="w-[75px] h-[64px]"
-                    src="images/Mask group@2x.png"
-                    alt="cahtimg"
-                  />
-                  <img
-                    className="w-[75px] h-[64px]"
-                    src="images/Mask group@2x.png"
-                    alt="cahtimg"
-                  />
-                  <img
-                    className="w-[75px] h-[64px]"
-                    src="images/Mask group@2x.png"
-                    alt="cahtimg"
-                  />
-                  <img
-                    className="w-[75px] h-[64px]"
-                    src="images/Mask group@2x.png"
-                    alt="cahtimg"
-                  />
-                  <img
-                    className="w-[75px] h-[64px]"
-                    src="images/Mask group@2x.png"
-                    alt="cahtimg"
-                  />
-                </div>
-              </div>
-              <Text className="mt-3 w-full text-end max-w-[550px] text-[#f0ecec] font-medium">
-                <span className="cursor-pointer" onClick={handlePrevious}>
-                  &lt;
-                </span>{" "}
-                Answer 1/3{" "}
-                <span className="cursor-pointer" onClick={handleNext}>
-                  &gt;
-                </span>
-              </Text>
-            </>
-          )}
-          {currentAnswer === 2 && (
-            <>
-              <div className="w-full flex gap-2 justify-start">
-                {/* <Img
-                src="images/img_clock.svg"
-                alt="Clock"
-                className="h-[16px] w-[16px] self-center"
-              /> */}
-                <div className="w-full max-w-[550px] min-h-[60px] border border-[#fff]/50 px-3 py-4 rounded-[8px]">
-                  <Text className="text-[#249cff] max-w-[450px] text-[14px] text-left leading-[17px] mb-[42px]">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nunc vulputate libero et velit interdum. Nunc vulputate
-                    libero et velit interdum.
-                  </Text>
-                </div>
-              </div>
-              <Text className="mt-3 w-full text-end max-w-[550px] text-[#f0ecec] font-medium">
-                <span className="cursor-pointer" onClick={handlePrevious}>
-                  &lt;
-                </span>{" "}
-                Answer 2/3{" "}
-                <span className="cursor-pointer" onClick={handleNext}>
-                  &gt;
-                </span>
-              </Text>
-            </>
-          )}
-          {currentAnswer === 3 && (
-            <>
-              <div className="w-full flex gap-2 justify-start">
-                {/* <Img
-                src="images/img_clock.svg"
-                alt="Clock"
-                className="h-[16px] w-[16px] self-center"
-              /> */}
-                <div className="w-full max-w-[550px] min-h-[60px] border border-[#fff]/50 px-3 py-4 rounded-[8px]">
-                  <Text className="text-[#249cff] max-w-[450px] text-[14px] text-left leading-[17px] mb-[42px]">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nunc vulputate libero et velit interdum. Lorem ipsum dolor
-                    sit amet, consectetur adipiscing elit. Nunc vulputate libero
-                    et velit interdum.
-                  </Text>
-                </div>
-              </div>
-              <Text className="mt-3 w-full text-end max-w-[550px] text-[#f0ecec] font-medium">
-                <span className="cursor-pointer" onClick={handlePrevious}>
-                  &lt;
-                </span>{" "}
-                Answer 3/3{" "}
-                <span className="cursor-pointer" onClick={handleNext}>
-                  &gt;
-                </span>
-              </Text>
-            </>
-          )}
           .{/* searches */}
-          <div className="w-full items-center flex gap-[21px] justify-end px-[30px] mb-[27px] mt-7">
+          <div className="w-full items-center flex gap-[21px] justify-end px-[30px] mb-[27px] mob:px-5 mob:gap-2 mt-7">
             <Text as="p" className="font-medium text-[#ADADAD] text-[12px]">
               Popular Searches:
             </Text>
-            <div className="border border-[#ADADAD] px-1 py-2 flex items-center justify-center gap-1 rounded-[5px]">
+            <div className="border border-[#ADADAD] px-1 py-2 mob:w-full flex items-center justify-center gap-1 rounded-[5px]">
               <Img src="images/search.svg" alt="search"></Img>
               <Text className="text-[#ADADAD] text-[12px]">How to</Text>
             </div>
-            <div className="border border-[#ADADAD] px-1 py-2 flex items-center justify-center gap-1 rounded-[5px]">
+            <div className="border border-[#ADADAD] px-1 py-2 mob:w-full flex items-center justify-center gap-1 rounded-[5px]">
               <Img src="images/search.svg" alt="search"></Img>
               <Text className="text-[#ADADAD] text-[12px]">Cybersecurity</Text>
             </div>
-            <div className="border border-[#ADADAD] px-1 py-2 flex items-center justify-center gap-1 rounded-[5px]">
+            <div className="border border-[#ADADAD] px-1 py-2 mob:hidden flex items-center justify-center gap-1 rounded-[5px]">
               <Img src="images/search.svg" alt="search"></Img>
               <Text className="text-[#ADADAD] text-[12px]">Lorem Ipsum</Text>
             </div>
@@ -449,7 +324,7 @@ const Worksapce = () => {
               type="text"
               value={text}
               onChange={(e) => setText(e.target.value)}
-              className="w-full text-white-a700 bg-transparent font-semibold border-none outline-none focus:outline-none focus:ring-0  pl-14 pr-[60px]"
+              className="w-full text-white-a700 bg-transparent font-semibold border-none outline-none focus:outline-none focus:ring-0  mob:pl-8 pl-14 pr-[60px]"
               // placeholder="Type here..."
             />
 
@@ -472,10 +347,79 @@ const Worksapce = () => {
               <img src="images/Polygon.svg" alt="Upload" />
             </div>
           </div>
+          <div className="mob:flex w-full justify-center mb-4 items mt-[24px] items-center gap-3  hidden">
+              <button
+                className="w-[82px] h-[46px] rounded-[8px] bg-[#048FFD] text-[#ffffff] font-semibold text-[14px] font-inter"
+                onClick={onOpen}
+              >
+                SHARE
+              </button>
+              <MyModal
+                title="Share Thread"
+                isOpen={isOpen}
+                closeModal={onClose}
+              >
+                <div className="relative flex items-center justify-center">
+                  {/* Left Image */}
+                  <img
+                    src="images/user.svg"
+                    alt="Left Icon"
+                    className="absolute left-10 top-11 "
+                  />
+
+                  {/* Input field */}
+                  <input
+                    type="text"
+                    className="w-[525px] mt-[27px] h-[51px] pl-10 mb-[99px] focus:border-[#fff] text-white-a700 border border-[#fff]/30 bg-transparent"
+                    placeholder="Add a name, group, or email"
+                  />
+
+                  {/* Right Images */}
+                  <div className="absolute right-10 top-11 flex gap-1">
+                    <img
+                      src="images/eye.svg"
+                      alt="Right Icon 1"
+                      className="w-6 h-6"
+                    />
+                    <img
+                      src="images/down-arrow.svg"
+                      alt="Right Icon 2"
+                      className="w-6 h-6"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex justify-between items-center">
+                  <img src="images/group-persons.svg" alt="" />
+                  <div className="flex gap-5 items-center">
+                    <Text
+                      className=" font-semibold text-[16px] text-white-a700 cursor-pointer"
+                      onClick={onClose}
+                    >
+                      Cancel
+                    </Text>
+                    <button className="w-[117px] h-[51px] signin-btn-gradient rounded-[5px] text-white-a700 font-semibold">
+                      Send
+                    </button>
+                  </div>
+                </div>
+              </MyModal>
+              <button className="max-w-[235px] h-[46px] rounded-[8px] text-[#fff] bg-[#048FFD] px-3">
+                <div className="flex gap-3 justify-center items-center">
+                  {/* <img src="../../../public/images/question.svg" alt="" /> */}
+                  <div className="h-[25px] w-[25px]  border-2 border-[#fff] rounded-full font-semibold">
+                    ?
+                  </div>
+                  <p className="uppercase font-semibold text-[#ffffff] text-[11px] font-inter">
+                    Help Center
+                  </p>
+                </div>
+              </button>
+            </div>
         </div>
       </div>
-
-      <div className="relative mb-[400px] flex w-full items-center flex-wrap gap-[55px] justify-center">
+     
+      <div className="relative mb-[400px] flex w-full items-center flex-wrap gap-[55px] mob:mb-10 justify-center">
         {workspacecards.map((card, num) => (
           <div
             key={num}
@@ -491,6 +435,7 @@ const Worksapce = () => {
           </div>
         ))}
       </div>
+      
     </div>
   );
 };

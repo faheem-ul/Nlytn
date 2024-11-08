@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+
+import ResponsiveSidebar from "components/ResponsiveSidebar";
 import { Text } from "components/Text";
 
 type Badge = {
@@ -159,19 +161,21 @@ const DataIngestion: React.FC<props> = ({ id, openWorkspace }) => {
   
   return (
     <div className="min-h-screen bg-[#05141D] w-full py-3 px-8" id={id}>
-      <div className="flex justify-end">
+      <ResponsiveSidebar />
+      <div className="flex justify-between w-full my-4 mob:items-center">
+      <Text className="text-[32px] mob:text-center mob:text-[24px] mob:w-full mob:mt-[50px] font-semibold text-[#fff] leading-[38.73px]">
+      Data Ingestion
+      </Text>
         <img
-          className="w-[18.67px] h-[19.04px] cursor-pointer"
+          className="w-[18.67px] mob:hidden h-[19.04px] cursor-pointer"
           src="images/cross.png"
           alt=""
           onClick={openWorkspace}
         />
       </div>
-      <Text className="text-[32px] font-semibold text-[#fff] leading-[38.73px] mt-2">
-      Data Ingestion
-      </Text>
+     
       {showUploadDiv && (
-        <div className="w-full max-w-[165px] bg-[#fff] px-[10px] mr-14 rounded-[8px] py-2 ml-auto ">
+        <div className="w-full max-w-[165px] bg-[#fff] px-[10px] mr-14 rounded-[8px] py-2 ml-auto mob:hidden ">
           <Text className="font-black font-inter text-[10px]  text-[#000] cursor-pointer">
             Upload from your computer
           </Text>
@@ -181,7 +185,7 @@ const DataIngestion: React.FC<props> = ({ id, openWorkspace }) => {
           </Text>
         </div>
       )}
-      <div className="relative">
+      <div className="relative mob:mb-8">
         <input
           className={`h-[40px] relative w-full input-with-image text-[#ADADAD] text-[16px] rounded-[4px] px-5 border border-[#ADADAD] bg-transparent ${
             showUploadDiv ? "mt-0" : "mt-8"
@@ -190,8 +194,8 @@ const DataIngestion: React.FC<props> = ({ id, openWorkspace }) => {
           placeholder="keyword filter"
         />
         <img
-          className={`absolute top-0 cursor-pointer right-0 mr-[43px] ${
-            showUploadDiv ? "mt-2" : "mt-10"
+          className={`absolute top-0 cursor-pointer right-0 mr-[43px] mob:mr-3 ${
+            showUploadDiv ? "mt-2 mob:mt-3" : "mt-10 "
           }`}
           onClick={handleShowUploadDiv}
           src="images/upload.svg"
@@ -199,14 +203,14 @@ const DataIngestion: React.FC<props> = ({ id, openWorkspace }) => {
         />
       </div>
 
-      <div className="flex mt-4 justify-between items-center mb-[30px]">
+      <div className="flex mt-4 justify-between items-center mb-[30px] mob:mb-9">
         <img
           className="w-[32px] h-[32px]"
           src="images/octicon_filter-16.png"
           alt=""
         />
 
-        <div className=" pr-[40px] ">
+        <div className=" pr-[40px] mob:pr-0 ">
           <div className="flex items-center gap-[33px] mb-4">
             <Text className="text-[9x] text-[#fff] leading-[13.5px]">
               Select All
@@ -286,16 +290,16 @@ const DataIngestion: React.FC<props> = ({ id, openWorkspace }) => {
           </div>
 
           {/* Pagination controls */}
-          <div className="flex justify-between items-center mt-8 w-full">
-            <button className="text-[#ffff] border border-white-a700 bg-[#07F6F933] font-medium px-4 py-1 mr-auto rounded-[24px] h-[30px]">
+          <div className="flex justify-between items-center mt-8 w-full mob:flex-col mob:gap-[20px]">
+            <button className="text-[#ffff] border border-white-a700 bg-[#07F6F933] mob:mx-auto font-medium mob:mt-10 px-4 py-1 mr-auto rounded-[24px] h-[30px]">
               Done
             </button>
 
-            <div className="flex space-x-4 mt-4 items-center bg-[#07F6F933] px-3 py-4 rounded-[40px]">
+            <div className="flex space-x-4 mt-4 items-center bg-[#07F6F933] px-3 py-4 rounded-[40px] mob:justify-center  mob:w-full">
               <button
                 onClick={handlePrevious}
                 disabled={currentPage === 1}
-                className="px-2 py-1 text-[#fff] text-[22px] bg-[#05141D] rounded-full "
+                className="px-2 py-1 text-[#fff] text-[22px] bg-[#05141D] rounded-full  "
               >
                 &lt;
               </button>

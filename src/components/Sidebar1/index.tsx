@@ -26,7 +26,7 @@ export default function Sidebar1({ ...props }: Props) {
     <Sidebar
       {...props}
       width="234px !important"
-      className={`${props.className} flex flex-col h-screen pt-6 top-0 px-1.5 sm:pt-5 !border-gray-800 !border-r !border-solid bg-gray-900 !sticky overflow-auto`}
+      className={`${props.className} flex mob:hidden flex-col h-screen pt-6 top-0 px-1.5 sm:pt-5 !border-gray-800 !border-r !border-solid bg-gray-900 !sticky overflow-auto`}
     >
       <div className="flex gap-3 items-center border border-[#FFFFFF] rounded-[8px] p-[10px] w-full max-w-[200px] mx-auto">
         <div className="relative">
