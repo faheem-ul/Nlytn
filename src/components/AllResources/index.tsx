@@ -3,7 +3,7 @@ import { Text } from "components/Text";
 
 interface props {
   id?: string
-  showRdScreen: ()=>void
+  showRdScreen?: ()=>void
 }
 
 const AllResources: React.FC<props> = ({
