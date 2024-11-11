@@ -77,7 +77,7 @@ const Drawer: React.FC<DrawerProps> = ({
         }}
       >
         {/* Drawer Close Button */}
-        <div className="mt-[20px]  px-[60px] mob:px-[25px] flex justify-end items-center">
+        <div className="mt-[20px]  px-[30px] mob:px-[15px] flex justify-end items-center">
           {/* <Text className="text-[#000] text-[20px] font-organetto font-extrabold leading-[60px] uppercase ">
             {drawerTitle ? drawerTitle : "Drawer"}
           </Text> */}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import ResponsiveSidebar from "components/ResponsiveSidebar";
+// import ResponsiveSidebar from "components/ResponsiveSidebar";
 import { Text } from "components/Text";
 
 
@@ -131,7 +131,7 @@ type Card = {
   
 interface props {
   id?: string;
-  openWorkspace: () => void;
+  openWorkspace?: () => void;
 }
 
 const Alert: React.FC<props> = ({ id, openWorkspace }) => {
@@ -183,10 +183,10 @@ const Alert: React.FC<props> = ({ id, openWorkspace }) => {
 
   
   return (
-    <div className="min-h-screen bg-[#05141D] w-full py-3 px-8 mob:px-5" id={id}>
-      <ResponsiveSidebar/>
+    <div className="min-h-screen bg-[#05141D] w-full py-3 px-8 mob:px-5 mob:bg-[#010A12]" id={id}>
+      {/* <ResponsiveSidebar/> */}
      <div className="flex justify-between w-full my-4 mob:items-center">
-      <Text className="text-[32px] font-semibold text-[#fff] mob:text-center mob:w-full mob:mt-[50px] mob:text-[24px] leading-[38.73px]">
+      <Text className="text-[32px] font-semibold text-[#fff] mob:text-center mob:w-full mob:mt-[20px] mob:text-[24px] leading-[38.73px]">
       Alerts & Notifications
       </Text>
         <img
@@ -198,9 +198,9 @@ const Alert: React.FC<props> = ({ id, openWorkspace }) => {
       </div>
      
       {showUploadDiv && (
-        <div className="w-full max-w-[95px] bg-[#0F2A37] px-[10px] my-5 border border-white-a700 rounded-[24px] py-2 ml-auto ">
+        <div className="w-full max-w-[105px] bg-[#0F2A37] px-[10px] my-5 border border-white-a700 rounded-[24px] py-1 ml-auto ">
           
-         <button className="text-white-a700">
+         <button className="text-white-a700 w-full">
          <div className="flex items-center w-full justify-between">
           <Text className="text-[12px]">Delete All</Text>
           <img src="images/Trash.svg" alt="" className="w-[16px]" />
@@ -317,7 +317,7 @@ const Alert: React.FC<props> = ({ id, openWorkspace }) => {
           </div>
 
           {/* Pagination controls */}
-          <div className="flex justify-between items-center mt-8 w-full mob:flex-col mob:gap-[20px]">
+          <div className="flex justify-end items-center mt-8 w-full mob:flex-col mob:gap-[20px]">
             <button className="text-[#ffff] border border-white-a700 hidden bg-[#07F6F933] mob:mx-auto font-medium mob:mt-10 px-4 py-1 mr-auto rounded-[24px] h-[30px]">
               Done
             </button>

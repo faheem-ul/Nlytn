@@ -6,9 +6,19 @@ import { gsap } from "gsap";
 
 import Drawer from "../ui/Drawer";
 import SidebarMob from "./Sidebar";
+import Worksapce from "components/Workspace";
+import SharedThreads from "components/SharedThreads";
+import DataIngestion from "components/DataIngestion";
+import HelpCenter from "components/HelpCenter";
+import Alert from "components/Alert";
 
-const ResponsiveSidebar = () => {
+interface props{
+  onMenuItemClick: (item: string) => void;
+}
+
+const ResponsiveSidebar: React.FC<props> = ({}) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<string | "Workspace" >("Workspace");
 
   const onClose = () => setIsOpen(false);
   const onOpen = () => setIsOpen(true);
@@ -33,9 +43,17 @@ const ResponsiveSidebar = () => {
     }
   }, [isOpen]);
 
+  const handleMenuItemClick = (item: string) => {
+    if (item !== selectedItem) {
+      setSelectedItem(item);
+    }
+    // console.log(item);
+    onClose(); 
+  };
+
   return (
     <>
-      <nav className="relative z-50 w-full hidden xl:block">
+      <nav className="relative z-50 w-full hidden xl:block px-5 bg-[#010A12]">
         <div className="flex justify-center items-center w-full ">
           <div className="relative max-w-[1340px] w-full flex flex-wrap items-center justify-between mx-auto pt-[20px]">
             <div className="flex justify-between w-full  gap-[35px] pb-4">
@@ -59,13 +77,13 @@ const ResponsiveSidebar = () => {
                   <button
                     // onClick={toggleMenu}
                     type="button"
-                    className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm border border-[#fff]/90 bg-[#fff] text-[#00297A] rounded-lg  "
+                    className="inline-flex items-center p-2 w-10 h-10 justify-center text-[40px] text-[#fff] rounded-lg  "
                     aria-controls="navbar-default"
                     aria-expanded={isOpen ? "true" : "false"}
                   >
                     <span className="sr-only">Open main menu</span>
                     <svg
-                      className="w-5 h-5"
+                      className="w-[40px] h-[30px]"
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -84,7 +102,7 @@ const ResponsiveSidebar = () => {
                 <div className="relative z-40">
                   <Drawer isOpen={isOpen} onClose={onClose}>
                     <div className="flex items-center h-full w-full ">
-                    <SidebarMob/>
+                    <SidebarMob onMenuItemClick={handleMenuItemClick}/>
                     </div>
                   </Drawer>
                 </div>
@@ -93,6 +111,15 @@ const ResponsiveSidebar = () => {
           </div>
         </div>
       </nav>
+
+      <div className="mob:bg-[#010A12]">
+        {selectedItem === "Workspace" && <Worksapce />}
+        {selectedItem === "settings" && <Worksapce />}
+        {selectedItem === "Shared THREADS" && <SharedThreads />}
+        {selectedItem === "alert" && <Alert />}
+        {selectedItem === "DATA INGESTION" && <DataIngestion />}
+        {selectedItem === "helpcenter" && <HelpCenter />}
+      </div>
     </>
   );
 };
