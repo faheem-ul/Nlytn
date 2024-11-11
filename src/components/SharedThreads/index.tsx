@@ -3,9 +3,13 @@ import { useNavigate } from "react-router-dom";
 
 import { Heading } from "components/Heading";
 import { Text } from "components/Text";
-import ResponsiveSidebar from "components/ResponsiveSidebar";
+// import ResponsiveSidebar from "components/ResponsiveSidebar";
 
-const SharedThreads = ({openWorkspace}) => {
+interface Props {
+  openWorkspace?: () => void
+}
+
+const SharedThreads: React.FC<Props> = ({openWorkspace}) => {
   const navigate = useNavigate();
 
   const relatedQuestion = [
@@ -23,16 +27,16 @@ const SharedThreads = ({openWorkspace}) => {
   ];
   return (
     <div
-      className="threads-bg bg-[#010A12CC]/100 bg-opacity-80 w-full mx-auto relative px-5" >
-      <div className="absolute inset-0 bg-[#000000] opacity-70"></div>
-      <ResponsiveSidebar />
-      <button className="bg-[#0F2A37] relative  px-3 py-3 rounded-[60px] mt-[46px] mob:my-[20px] mob:mx-4 ml-[40px]"  onClick={openWorkspace}>
+      className="threads-bg bg-[#010A12CC]/100 bg-opacity-80 w-full mx-auto relative px-5 mob:bg-[#05141D]" >
+      <div className="absolute inset-0 bg-[#000000] opacity-70 mob:bg-[#010A12]"></div>
+      {/* <ResponsiveSidebar /> */}
+      <button className="bg-[#0F2A37] relative  px-3 py-3 rounded-[60px] mt-[46px] mob:my-[10px] mob:mx-4 ml-[40px]"  onClick={openWorkspace}>
         <div className="flex items-center gap-1">
           <img src="images/Arrowbaack.svg" alt="" className="w-[20px]" />
           <Text className="text-white-a700 font-black">Back</Text>
         </div>
       </button>
-      <div className="w-full flex justify-center h-full items-center mt-[60px] mob:mt-7 mob:mb-14">
+      <div className="w-full flex justify-center h-full items-center mt-[60px] mob:mt-6 mob:mb-14">
         <div className="flex px-5 relative w-full max-w-[1144px] justify-center items-center signin-gradient border border-solid border-[#fff]/20 rounded-[20px]">
           <div className="flex flex-col items-start justify-center w-full max-w-[1046px] rounded-[20px] px-5 py-[34px] mob:px-0">
             <div className="flex justify-between items-center w-full mt-[55px] mb-[31px] mob:mt-[7px] mob:mb-[15px]">
@@ -47,7 +51,7 @@ const SharedThreads = ({openWorkspace}) => {
             <div className="flex gap-[90px] mob:flex-col mob:gap-5">
               <div className="w-full max-w-[530px] text-white-a700">
                 <Text className="text-[16px] font-bold mb-5">Answer</Text>
-                <Text className="text-[13px]  mb-8 px-5 mob:mb-5 font-[400] mob:text-center mob:px-0">
+                <Text className="text-[13px]  mb-8 px-5 mob:mb-5 font-[400] mob:text-center mob:px-0 mob:leading-[22px]">
                   (MOCK TS//REL TO USA, GBR) Lorem ipsum dolor sit amet, sed do
                   eiusmod tempor incididunt ut labore et dolore magna do eiusmod
                   tempor incididunt ut labore et dolore magna. Excepteur sint
@@ -58,11 +62,11 @@ const SharedThreads = ({openWorkspace}) => {
                   ut labore et dolore magna aliqua. Duis aute irure dolor in
                   reprehenderit in. Excepteur sint occaecat cupidatat [3].
                 </Text>
-                <Text className="text-[13px] mob:text-center font-light mb-5 mob:mb-2 px-5 text-[#048FFD] text-right">
+                <Text className="text-[13px] mob:text-center font-light mb-5 mob:mb-2 px-5 text-[#048FFD] text-right mob:leading-[22px]">
                   (MOCK TS//REL TO USA, GBR) Lorem ipsum dolor sit sed do
                   eiusmod tempor incididunt ut labore et dolore magna aliqua ?
                 </Text>
-                <Text className="text-[13px] mob:text-center mb-5 px-5 max-w-[530px] font-[400]">
+                <Text className="text-[13px] mob:text-center mb-5 px-5 max-w-[530px] font-[400] mob:leading-[22px]">
                   Lorem ipsum sit sed do eiusmod tempor incididunt ut labore et
                   dolore magna aliqua ?
                 </Text>
@@ -96,7 +100,7 @@ const SharedThreads = ({openWorkspace}) => {
             <Text className="text-[16px] font-bold mb-5 text-white-a700">
               Related Questions
             </Text>
-            <div className="max-h-[100px] w-full overflow-scroll text-white-a700">
+            <div className="max-h-[100px] w-full overflow-y-scroll custom-mine-scrollbar   text-white-a700">
               {relatedQuestion.map((question, index) => (
                 <ul className="list-disc list-inside">
                   <li

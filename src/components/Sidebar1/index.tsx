@@ -6,6 +6,7 @@ import { Switch } from "@headlessui/react";
 import { FaChevronRight } from "react-icons/fa";
 import { FaChevronLeft } from "react-icons/fa";
 import { MenuItem, SubMenu, Menu, Sidebar } from "react-pro-sidebar";
+import { Link } from "react-router-dom";
 
 interface Props {
   className?: string;
@@ -272,6 +273,7 @@ export default function Sidebar1({ ...props }: Props) {
           <div className="h-[18px] w-[18px] rounded-lg bg-white-a700" />
         </div> */}
         <div className="mr-2 mt-[120px] self-stretch">
+          <Link to="/">
           <MenuItem
             icon={
               <Img
@@ -284,6 +286,7 @@ export default function Sidebar1({ ...props }: Props) {
             Log out
           </MenuItem>
         
+          </Link>
           <div className="h-[1px] w-full bg-[#FFFFFF33] my-2 "></div>
           <div className="flex flex-row-reverse items-center justify-between w-full mt-6">
             <FaChevronLeft className="text-white-a700 text-[20px] cursor-pointer"  onClick={toggleSidebar}/>

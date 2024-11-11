@@ -4,14 +4,18 @@ import { Text } from "components/Text";
 import React, { useState } from "react";
 
 import ResponsiveSidebar from "components/ResponsiveSidebar";
-const HelpCenter = ({openWorkspace}) => {
+
+interface Props {
+  openWorkspace?: () => void
+}
+const HelpCenter: React.FC<Props> = ({openWorkspace}) => {
   const [text, setText] = useState("");
 
   return (
-    <div className="flex-1 px-5 py-[100px] mob:pb-10 mob:pt-0 help-center-bg min-h-[100vh] relative">
-       <ResponsiveSidebar />
-       <div className="absolute inset-0 bg-[#000000] opacity-50"></div>
-      <button onClick={openWorkspace} className="text-white-a700 text-[9px] font-semibold absolute top-5 mob:top-[90px] left-10 bg-[#0F2A37] rounded-full w-[55px] h-[21px] flex justify-center items-center gap-1">
+    <div className="flex-1 px-5 py-[100px] mob:pb-10 mob:pt-0 help-center-bg min-h-[100vh]  relative">
+       {/* <ResponsiveSidebar /> */}
+       <div className="absolute inset-0 bg-[#000000] opacity-50 "></div>
+      <button onClick={openWorkspace} className="text-white-a700 text-[9px] font-semibold absolute top-5 mob:top-[90px] left-10 bg-[#0F2A37]  rounded-full w-[55px] h-[21px] flex justify-center items-center gap-1">
         <img src="images/Arrowbaack.svg" alt="" /> Back
       </button>
       <div className=" flex-col relative items-start rounded-[20px] border border-solid border-[#fff]/60 help-center-bg-div px-5 pt-5 mob:mt-[70px] pb-[60px]">

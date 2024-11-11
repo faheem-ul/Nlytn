@@ -36,7 +36,7 @@ const Navbar = () => {
     <>
       <nav className="relative z-50 w-full">
         <div className="flex justify-center items-center w-full ">
-          <div className="relative max-w-[1340px] w-full flex flex-wrap items-center justify-between mx-auto pt-[50px]">
+          <div className="relative max-w-[1340px] w-full flex flex-wrap items-center justify-between mx-auto pt-[25px]">
             <div className="flex justify-between w-full  gap-[35px] pl-[5%] pb-4">
               <Link
                 to="/"
@@ -45,6 +45,7 @@ const Navbar = () => {
                 <img
                   src="/images/logo.svg"
                   alt="Flowbite Logo"
+                  className="mob:w-[121px]"
                   
                 />
               </Link>
@@ -58,7 +59,7 @@ const Navbar = () => {
                 >
                   <span className="sr-only">Open main menu</span>
                   <svg
-                    className="w-5 h-5"
+                    className="w-[40px] h-[30px]"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -144,13 +145,13 @@ const Navbar = () => {
                   <button
                     // onClick={toggleMenu}
                     type="button"
-                    className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm border border-[#fff]/90 bg-[#fff] text-[#00297A] rounded-lg  "
+                    className="inline-flex items-center p-2 w-[40px] h-10 justify-center text-sm text-[#fff] rounded-lg  "
                     aria-controls="navbar-default"
                     aria-expanded={isOpen ? "true" : "false"}
                   >
                     <span className="sr-only">Open main menu</span>
                     <svg
-                      className="w-5 h-5"
+                      className="w-[40px] h-[30px]"
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -160,7 +161,7 @@ const Navbar = () => {
                         stroke="currentColor"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        strokeWidth="2"
+                        strokeWidth="2.5"
                         d="M1 1h15M1 7h15M1 13h15"
                       />
                     </svg>

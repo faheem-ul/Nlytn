@@ -25,7 +25,7 @@ const MyModal: React.FC<ModalProps> = ({ title, children, isOpen, closeModal }) 
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-[#000]/70 mob:hidden" />
+          <div className="fixed inset-0 bg-[#000]/70" />
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto ">
@@ -39,7 +39,7 @@ const MyModal: React.FC<ModalProps> = ({ title, children, isOpen, closeModal }) 
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-[635px] min-h-[332px] transform overflow-hidden modal-bg rounded-[15px]  p-6 ">
+              <Dialog.Panel className="w-full max-w-[635px]  transform overflow-hidden modal-bg border border-[#fff] rounded-[15px]  p-6 ">
                 
                 <div className="mt-2 flex justify-between items-center">
                   <Text className=" font-bold text-white-a700 text-[24px] mt-5 leading-6">

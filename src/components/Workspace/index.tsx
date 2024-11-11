@@ -7,6 +7,7 @@ import { Img } from "components/Img";
 import useDisclosure from "components/hooks/useDisclosure";
 import MyModal from "components/ui/Modal";
 import ResponsiveSidebar from "components/ResponsiveSidebar";
+// import ResponsiveSidebar from "components/ResponsiveSidebar";
 
 const Worksapce = () => {
   const [images, setImages] = useState([]);
@@ -94,14 +95,14 @@ const Worksapce = () => {
 
   return (
     <div className="workspace-bg bg-[#010A12CC]/100 bg-opacity-80 w-full min-h-[100vh] h-full relative px-5">
-      <div className="absolute inset-0 bg-[#000000] opacity-70"></div>
-      <ResponsiveSidebar />
+      <div className="absolute inset-0 bg-[#000000] opacity-70 mob:bg-[#010A12]"></div>
+      {/* <ResponsiveSidebar /> */}
       <div className="flex-1 mob:px-0 px-8 pb-[100px] mob:py-10 relative mt-16 mob:mt-0">
         <div className="flex flex-col items-start rounded-[20px] border border-solid border-white-a700 bg-gray-900 px-5 py-[34px]">
           <div className="flex justify-between w-full">
             <Heading
               as="h1"
-              className="text-shadow-ts mob:w-full text-[36px] mob:text-[20px] mob:text-center font-bold text-white-a700 md:text-[34px] sm:text-[32px]"
+              className="text-shadow-ts mob:w-full text-[36px] mob:leading-[30px] mob:text-[24px] mob:text-center font-bold text-white-a700 md:text-[34px] sm:text-[32px]"
             >
               How Can We Help You Today?
             </Heading>
@@ -147,7 +148,7 @@ const Worksapce = () => {
                   </div>
                 </div>
 
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center ">
                   <img src="images/group-persons.svg" alt="" />
                   <div className="flex gap-5 items-center">
                     <Text
@@ -177,7 +178,7 @@ const Worksapce = () => {
           </div>
           <Text
             as="p"
-            className="mt-2 w-[44%] mob:text-[12px] mob:w-full mob:text-center text-[14px]  font-light leading-[128%] text-gray-500 md:w-full"
+            className="mt-2 w-[44%] mob:text-[13px] mob:w-full mob:text-center text-[14px]  font-light leading-[128%] text-gray-500 "
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
             vulputate libero et velit interdum.
@@ -205,7 +206,7 @@ const Worksapce = () => {
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
                 vulputate libero et velit interdum.
               </Text>
-              <div className="flex w-full justify-between items-center">
+              <div className="flex w-full justify-between items-center mob:mt-5">
                 <Img src="images/link.svg" alt="Clock" className="" />
                 <div className="flex items-center gap-1">
                   <button className="text-[#fff] border border-[#fff] rounded-[4px] px-[7px] py-[2px] bg-transparent text-[14px]">
@@ -343,7 +344,7 @@ const Worksapce = () => {
 
             {/* <img src="images/Polygon.svg" alt="Upload" className=" right-0"/> */}
             {/* Upload button */}
-            <div className="absolute bottom-[-30px] right-0 transform -translate-y-1/2 pointer-events-none border border-[#ffffff] w-[60px] h-[60px] flex justify-center items-center rounded-tr-[10px]">
+            <div className="absolute bottom-[-30px] mob:border-none right-0 transform -translate-y-1/2 pointer-events-none border border-[#ffffff] w-[60px] h-[60px] flex justify-center items-center rounded-tr-[10px]">
               <img src="images/Polygon.svg" alt="Upload" />
             </div>
           </div>
@@ -364,18 +365,18 @@ const Worksapce = () => {
                   <img
                     src="images/user.svg"
                     alt="Left Icon"
-                    className="absolute left-10 top-11 "
+                    className="absolute left-10 top-11 mob:left-[2%] "
                   />
 
                   {/* Input field */}
                   <input
                     type="text"
-                    className="w-[525px] mt-[27px] h-[51px] pl-10 mb-[99px] focus:border-[#fff] text-white-a700 border border-[#fff]/30 bg-transparent"
+                    className="w-[525px] mt-[27px] h-[51px] pl-10 mb-[99px] focus:border-[#fff] text-white-a700 border border-[#fff]/30 bg-transparent mob:mb-4"
                     placeholder="Add a name, group, or email"
                   />
 
                   {/* Right Images */}
-                  <div className="absolute right-10 top-11 flex gap-1">
+                  <div className="absolute right-10 mob:right-[2%] top-11 flex gap-1">
                     <img
                       src="images/eye.svg"
                       alt="Right Icon 1"
@@ -419,17 +420,17 @@ const Worksapce = () => {
         </div>
       </div>
      
-      <div className="relative mb-[400px] flex w-full items-center flex-wrap gap-[55px] mob:mb-10 justify-center">
+      <div className="relative mb-[400px] flex w-full items-center flex-wrap gap-[55px] mob:mb-10 justify-center mob:gap-[26px]">
         {workspacecards.map((card, num) => (
           <div
             key={num}
-            className="py-7 px-[20px] border border-[#fff]/60 w-full max-w-[220px] rounded-[20px] card-bg max-h-[260px]"
+            className="py-7 px-[20px] border border-[#fff]/60 w-full max-w-[220px] rounded-[20px] card-bg max-h-[260px] mob:max-w-full"
           >
             <img src={card.imageURl} alt="image" className="mx-auto" />
-            <Text className="text-[14px] font-bold leading-[17px] text-white-a700 text-center mt-[22px] mb-2">
+            <Text className="text-[14px] font-bold leading-[17px] text-white-a700 text-center mt-[22px] mob:mt-2 mb-2">
               {card.CardHeading}
             </Text>
-            <Text className="text-[12px] font-light leading-[17px] w-full text-[#ADADAD] text-center">
+            <Text className="text-[12px] font-light  max-w-[208px] mob:mx-auto leading-[17px] w-full text-[#ADADAD] text-center">
               {card.CardDescrip}
             </Text>
           </div>

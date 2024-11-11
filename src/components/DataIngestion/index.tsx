@@ -108,7 +108,7 @@ type Card = {
   
 interface props {
   id?: string;
-  openWorkspace : ()=> void
+  openWorkspace?: ()=> void
 }
 
 const DataIngestion: React.FC<props> = ({ id, openWorkspace }) => {
@@ -160,10 +160,10 @@ const DataIngestion: React.FC<props> = ({ id, openWorkspace }) => {
 
   
   return (
-    <div className="min-h-screen bg-[#05141D] w-full py-3 px-8" id={id}>
-      <ResponsiveSidebar />
+    <div className="min-h-screen bg-[#05141D] w-full py-3 px-8 mob:bg-[#010A12]" id={id}>
+      {/* <ResponsiveSidebar /> */}
       <div className="flex justify-between w-full my-4 mob:items-center">
-      <Text className="text-[32px] mob:text-center mob:text-[24px] mob:w-full mob:mt-[50px] font-semibold text-[#fff] leading-[38.73px]">
+      <Text className="text-[32px] mob:text-center mob:text-[24px] mob:w-full mob:mt-[10px] font-semibold text-[#fff] leading-[38.73px]">
       Data Ingestion
       </Text>
         <img
