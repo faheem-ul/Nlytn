@@ -6,10 +6,10 @@ import { Text } from "components/Text";
 // import ResponsiveSidebar from "components/ResponsiveSidebar";
 
 interface Props {
-  openWorkspace?: () => void
+  openWorkspace?: () => void;
 }
 
-const SharedThreads: React.FC<Props> = ({openWorkspace}) => {
+const SharedThreads: React.FC<Props> = ({ openWorkspace }) => {
   const navigate = useNavigate();
 
   const relatedQuestion = [
@@ -26,11 +26,13 @@ const SharedThreads: React.FC<Props> = ({openWorkspace}) => {
     "Lorem ipsum dolor sit amet?",
   ];
   return (
-    <div
-      className="threads-bg bg-[#010A12CC]/100 bg-opacity-80 w-full mx-auto relative px-5 mob:bg-[#05141D]" >
+    <div className="threads-bg bg-[#010A12CC]/100 bg-opacity-80 w-full mx-auto relative px-5 mob:bg-[#05141D] ">
       <div className="absolute inset-0 bg-[#000000] opacity-70 mob:bg-[#010A12]"></div>
       {/* <ResponsiveSidebar /> */}
-      <button className="bg-[#0F2A37] relative  px-3 py-3 rounded-[60px] mt-[46px] mob:my-[10px] mob:mx-4 ml-[40px]"  onClick={openWorkspace}>
+      <button
+        className="bg-[#0F2A37] relative  px-3 py-3 rounded-[60px] mt-[46px] mob:my-[10px] mob:mx-4 ml-[40px]"
+        onClick={() => openWorkspace && openWorkspace()}
+      >
         <div className="flex items-center gap-1">
           <img src="images/Arrowbaack.svg" alt="" className="w-[20px]" />
           <Text className="text-white-a700 font-black">Back</Text>
@@ -46,7 +48,11 @@ const SharedThreads: React.FC<Props> = ({openWorkspace}) => {
               >
                 When was the last time Person X went to Location Y?
               </Heading>
-              <img src="images/edit.svg" alt="" className="w-[25px] h-[25px] mob:hidden" />
+              <img
+                src="images/edit.svg"
+                alt=""
+                className="w-[25px] h-[25px] mob:hidden"
+              />
             </div>
             <div className="flex gap-[90px] mob:flex-col mob:gap-5">
               <div className="w-full max-w-[530px] text-white-a700">
