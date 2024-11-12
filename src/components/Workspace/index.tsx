@@ -91,7 +91,7 @@ const Worksapce = () => {
   };
 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const maxVisibleImages = 3;
+  const maxVisibleImages = 6;
 
   return (
     <div className="workspace-bg bg-[#010A12CC]/100 bg-opacity-80 w-full min-h-[100vh] h-full relative px-5">
@@ -106,75 +106,6 @@ const Worksapce = () => {
             >
               How Can We Help You Today?
             </Heading>
-            <div className="flex items-center gap-3 mob:hidden">
-              <button
-                className="w-[82px] h-[46px] rounded-[8px] bg-[#048FFD] text-[#ffffff] font-semibold text-[14px] font-inter"
-                onClick={onOpen}
-              >
-                SHARE
-              </button>
-              <MyModal
-                title="Share Thread"
-                isOpen={isOpen}
-                closeModal={onClose}
-              >
-                <div className="relative flex items-center justify-center">
-                  {/* Left Image */}
-                  <img
-                    src="images/user.svg"
-                    alt="Left Icon"
-                    className="absolute left-10 top-11 "
-                  />
-
-                  {/* Input field */}
-                  <input
-                    type="text"
-                    className="w-[525px] mt-[27px] h-[51px] pl-10 mb-[99px] focus:border-[#fff] text-white-a700 border border-[#fff]/30 bg-transparent"
-                    placeholder="Add a name, group, or email"
-                  />
-
-                  {/* Right Images */}
-                  <div className="absolute right-10 top-11 flex gap-1">
-                    <img
-                      src="images/eye.svg"
-                      alt="Right Icon 1"
-                      className="w-6 h-6"
-                    />
-                    <img
-                      src="images/down-arrow.svg"
-                      alt="Right Icon 2"
-                      className="w-6 h-6"
-                    />
-                  </div>
-                </div>
-
-                <div className="flex justify-between items-center ">
-                  <img src="images/group-persons.svg" alt="" />
-                  <div className="flex gap-5 items-center">
-                    <Text
-                      className=" font-semibold text-[16px] text-white-a700 cursor-pointer"
-                      onClick={onClose}
-                    >
-                      Cancel
-                    </Text>
-                    <button className="w-[117px] h-[51px] signin-btn-gradient rounded-[5px] text-white-a700 font-semibold">
-                      Send
-                    </button>
-                  </div>
-                </div>
-              </MyModal>
-              <button className="max-w-[235px] h-[46px] rounded-[8px] text-[#fff] bg-[#048FFD] px-3">
-                <div className="flex gap-3 justify-center items-center">
-                  {/* <img src="../../../public/images/question.svg" alt="" /> */}
-                  <div className="h-[25px] w-[25px]  border-2 border-[#fff] rounded-full font-semibold">
-                    ?
-                  </div>
-                  <p className="uppercase font-semibold text-[#ffffff] text-[11px] font-inter">
-                    Help Center
-                  </p>
-                </div>
-              </button>
-            </div>
           </div>
           <Text
             as="p"
@@ -284,7 +215,7 @@ const Worksapce = () => {
               <Text className="text-[#ADADAD] text-[12px]">Lorem Ipsum</Text>
             </div>
           </div>
-          <div className="relative w-full border border-[#fff] rounded-t-[12px] input-gradient p-4">
+          <div className="relative w-full border border-[#fff] rounded-t-[12px] input-gradient py-4 px-8 h-[130px]">
             {/* Images preview area */}
             <div className="relative">
               {images.map((image, index) => (
@@ -305,7 +236,7 @@ const Worksapce = () => {
                     key={index}
                     src={image}
                     alt={`Thumbnail ${index + 1}`}
-                    className="w-[60px] h-[60px] rounded-md"
+                    className="w-[60px] h-[55px] rounded-md"
                     onMouseEnter={() => setHoveredIndex(index)}
                     onMouseLeave={() => setHoveredIndex(null)}
                   />
@@ -325,7 +256,7 @@ const Worksapce = () => {
               type="text"
               value={text}
               onChange={(e) => setText(e.target.value)}
-              className="w-full text-white-a700 bg-transparent font-semibold border-none outline-none focus:outline-none focus:ring-0  mob:pl-8 pl-14 pr-[60px]"
+              className="w-full text-white-a700 bg-transparent font-semibold border-none outline-none focus:outline-none focus:ring-0 pt-4 mob:pl-8 pl-4 pr-[40px]"
               // placeholder="Type here..."
             />
 
@@ -349,77 +280,73 @@ const Worksapce = () => {
             </div>
           </div>
           <div className="mob:flex w-full justify-center mb-4 items mt-[24px] items-center gap-3  hidden">
-              <button
-                className="w-[82px] h-[46px] rounded-[8px] bg-[#048FFD] text-[#ffffff] font-semibold text-[14px] font-inter"
-                onClick={onOpen}
-              >
-                SHARE
-              </button>
-              <MyModal
-                title="Share Thread"
-                isOpen={isOpen}
-                closeModal={onClose}
-              >
-                <div className="relative flex items-center justify-center">
-                  {/* Left Image */}
+            <button
+              className="w-[82px] h-[46px] rounded-[8px] bg-[#048FFD] text-[#ffffff] font-semibold text-[14px] font-inter"
+              onClick={onOpen}
+            >
+              SHARE
+            </button>
+            <MyModal title="Share Thread" isOpen={isOpen} closeModal={onClose}>
+              <div className="relative flex items-center justify-center">
+                {/* Left Image */}
+                <img
+                  src="images/user.svg"
+                  alt="Left Icon"
+                  className="absolute left-10 top-11 mob:left-[2%] "
+                />
+
+                {/* Input field */}
+                <input
+                  type="text"
+                  className="w-[525px] mt-[27px] h-[51px] pl-10 mb-[99px] focus:border-[#fff] text-white-a700 border border-[#fff]/30 bg-transparent mob:mb-4"
+                  placeholder="Add a name, group, or email"
+                />
+
+                {/* Right Images */}
+                <div className="absolute right-10 mob:right-[2%] top-11 flex gap-1">
                   <img
-                    src="images/user.svg"
-                    alt="Left Icon"
-                    className="absolute left-10 top-11 mob:left-[2%] "
+                    src="images/eye.svg"
+                    alt="Right Icon 1"
+                    className="w-6 h-6"
                   />
-
-                  {/* Input field */}
-                  <input
-                    type="text"
-                    className="w-[525px] mt-[27px] h-[51px] pl-10 mb-[99px] focus:border-[#fff] text-white-a700 border border-[#fff]/30 bg-transparent mob:mb-4"
-                    placeholder="Add a name, group, or email"
+                  <img
+                    src="images/down-arrow.svg"
+                    alt="Right Icon 2"
+                    className="w-6 h-6"
                   />
+                </div>
+              </div>
 
-                  {/* Right Images */}
-                  <div className="absolute right-10 mob:right-[2%] top-11 flex gap-1">
-                    <img
-                      src="images/eye.svg"
-                      alt="Right Icon 1"
-                      className="w-6 h-6"
-                    />
-                    <img
-                      src="images/down-arrow.svg"
-                      alt="Right Icon 2"
-                      className="w-6 h-6"
-                    />
-                  </div>
+              <div className="flex justify-between items-center">
+                <img src="images/group-persons.svg" alt="" />
+                <div className="flex gap-5 items-center">
+                  <Text
+                    className=" font-semibold text-[16px] text-white-a700 cursor-pointer"
+                    onClick={onClose}
+                  >
+                    Cancel
+                  </Text>
+                  <button className="w-[117px] h-[51px] signin-btn-gradient rounded-[5px] text-white-a700 font-semibold">
+                    Send
+                  </button>
                 </div>
-
-                <div className="flex justify-between items-center">
-                  <img src="images/group-persons.svg" alt="" />
-                  <div className="flex gap-5 items-center">
-                    <Text
-                      className=" font-semibold text-[16px] text-white-a700 cursor-pointer"
-                      onClick={onClose}
-                    >
-                      Cancel
-                    </Text>
-                    <button className="w-[117px] h-[51px] signin-btn-gradient rounded-[5px] text-white-a700 font-semibold">
-                      Send
-                    </button>
-                  </div>
+              </div>
+            </MyModal>
+            <button className="max-w-[235px] h-[46px] rounded-[8px] text-[#fff] bg-[#048FFD] px-3">
+              <div className="flex gap-3 justify-center items-center">
+                {/* <img src="../../../public/images/question.svg" alt="" /> */}
+                <div className="h-[25px] w-[25px]  border-2 border-[#fff] rounded-full font-semibold">
+                  ?
                 </div>
-              </MyModal>
-              <button className="max-w-[235px] h-[46px] rounded-[8px] text-[#fff] bg-[#048FFD] px-3">
-                <div className="flex gap-3 justify-center items-center">
-                  {/* <img src="../../../public/images/question.svg" alt="" /> */}
-                  <div className="h-[25px] w-[25px]  border-2 border-[#fff] rounded-full font-semibold">
-                    ?
-                  </div>
-                  <p className="uppercase font-semibold text-[#ffffff] text-[11px] font-inter">
-                    Help Center
-                  </p>
-                </div>
-              </button>
-            </div>
+                <p className="uppercase font-semibold text-[#ffffff] text-[11px] font-inter">
+                  Help Center
+                </p>
+              </div>
+            </button>
+          </div>
         </div>
       </div>
-     
+
       <div className="relative mb-[400px] flex w-full items-center flex-wrap gap-[55px] mob:mb-10 justify-center mob:gap-[26px]">
         {workspacecards.map((card, num) => (
           <div
@@ -436,7 +363,6 @@ const Worksapce = () => {
           </div>
         ))}
       </div>
-      
     </div>
   );
 };
