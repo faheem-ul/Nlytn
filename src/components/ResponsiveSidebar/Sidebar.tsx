@@ -7,6 +7,8 @@ import { FaChevronRight } from "react-icons/fa";
 import { FaChevronLeft } from "react-icons/fa";
 import { MenuItem, SubMenu, Menu, Sidebar } from "react-pro-sidebar";
 import { Link } from "react-router-dom";
+import MyModal from "components/ui/Modal";
+import useDisclosure from "components/hooks/useDisclosure";
 
 interface Props {
   className?: string;
@@ -14,6 +16,7 @@ interface Props {
   //   Workspace?: ()=> void
   //   SharedThreads?: ()=> void
   //   Alert?: () => void
+
   onMenuItemClick: (
     item:
       | "Workspace"
@@ -31,6 +34,13 @@ export default function SidebarMob({ ...props }: Props) {
   const [visible, setVisible] = useState(true);
   const [isWorkSpaceOpen, setIsWorkSpaceOpen] = useState(false);
   const [isSharedThreadsOpen, setIsSharedThreadsOpen] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isDivVisible, setIsDivVisible] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsDivVisible(!isDivVisible);
+    console.log("clicked");
+  };
 
   // Function to handle menu item click
   const handleMenuItemClick = (itemName: string) => {
@@ -40,10 +50,10 @@ export default function SidebarMob({ ...props }: Props) {
   const toggleSubMenu = (subMenu: "Workspace" | "Shared THREADS") => {
     if (subMenu === "Workspace") {
       setIsWorkSpaceOpen(!isWorkSpaceOpen);
-      setIsSharedThreadsOpen(false)
+      setIsSharedThreadsOpen(false);
     } else if (subMenu === "Shared THREADS") {
       setIsSharedThreadsOpen(!isSharedThreadsOpen);
-      setIsWorkSpaceOpen(false)
+      setIsWorkSpaceOpen(false);
     }
   };
 
@@ -97,12 +107,16 @@ export default function SidebarMob({ ...props }: Props) {
           className="mt-6 flex w-full flex-col items-center self-stretch pb-2 pl-2"
         >
           <div className="mr-2 ">
-            <div className={`flex items-center justify-between w-full p-3 ${isWorkSpaceOpen ? "bg-[#048ffd] rounded-[8px]" : ""}`}>
+            <div
+              className={`flex items-center justify-between w-full p-3 ${
+                isWorkSpaceOpen ? "bg-[#048ffd] rounded-[8px]" : ""
+              }`}
+            >
               <div
                 onClick={() => {
                   setSelectedItem("Workspace");
-                  props.onMenuItemClick("Workspace")}
-                }
+                  props.onMenuItemClick("Workspace");
+                }}
                 className="flex items-center cursor-pointer gap-3"
               >
                 <Img src="images/workspace.svg" className="h-[24px] w-[24px]" />
@@ -136,9 +150,29 @@ export default function SidebarMob({ ...props }: Props) {
               <p className="text-[12px] text-[#FFFFFF] font-bold leading-[12.8px]">
                 Today
               </p>
-              <p className="text-[12px] text-[#ADADAD] font-normal leading-[13.8px] mt-2">
-                Lorem ipsum dolor sit amet lorem ip
-              </p>
+              <div className="flex pr-3 justify-start gap-5">
+                <p
+                  className="text-[12px] text-[#ADADAD] font-normal leading-[13.8px] mt-2"
+                  onClick={toggleSidebar}
+                >
+                  Lorem ipsum dolor sit amet lorem ip
+                </p>
+                {isDivVisible && (
+                  <div className=" top-[230px] left-[210px] z-20 bg-[#fff] py-2 px-2 w-[60px] rounded shadow-lg">
+                    <Text
+                      className="text-[8px] font-medium text-[#000] cursor-pointer"
+                      onClick={onOpen}
+                    >
+                      Share
+                    </Text>
+
+                    <hr className="my-1" />
+                    <Text className="text-[8px] font-medium text-[#000] cursor-pointer">
+                      Delete
+                    </Text>
+                  </div>
+                )}
+              </div>
               <div className="h-[1px] w-full bg-[#FFFFFF33] my-2"></div>
               <p className="text-[12px] text-[#ADADAD] font-normal leading-[13.8px] mt-2">
                 Lorem ipsum dolor sit amet lorem ip
@@ -161,19 +195,22 @@ export default function SidebarMob({ ...props }: Props) {
            } */}
           </div>
 
-
           <div className="mr-2 ">
-            <div className={`flex items-center justify-between w-full p-3 ${isSharedThreadsOpen ? "bg-[#048ffd] rounded-[8px]" : ""}`}>
+            <div
+              className={`flex items-center justify-between w-full p-3 ${
+                isSharedThreadsOpen ? "bg-[#048ffd] rounded-[8px]" : ""
+              }`}
+            >
               <div
                 onClick={() => {
                   setSelectedItem("Shared THREADS");
-                  props.onMenuItemClick("Shared THREADS")}
-                }
+                  props.onMenuItemClick("Shared THREADS");
+                }}
                 className="flex items-center cursor-pointer gap-3"
               >
                 <Img src="images/workspace.svg" className="h-[24px] w-[24px]" />
                 <span className="text-[14px] text-[#e8eaf6] font-semibold uppercase">
-                Shared THREADS
+                  Shared THREADS
                 </span>
               </div>
               <FaChevronRight
@@ -184,7 +221,6 @@ export default function SidebarMob({ ...props }: Props) {
               />
             </div>
 
-           
             <div
               className={`pl-4 overflow-y-scroll relative transition-all duration-500 ease-in-out ${
                 isSharedThreadsOpen
@@ -195,7 +231,7 @@ export default function SidebarMob({ ...props }: Props) {
                 transitionProperty: "opacity, max-height",
               }}
             >
-            <MenuItem>Submenu Item</MenuItem>
+              <MenuItem>Submenu Item</MenuItem>
             </div>
 
             {/* )
@@ -203,7 +239,6 @@ export default function SidebarMob({ ...props }: Props) {
           </div>
 
           <div className="mr-2 flex flex-col gap-1.5 self-stretch bg-[#031627] relative z-[10]">
-            
             <MenuItem
               icon={
                 <Img
@@ -328,20 +363,19 @@ export default function SidebarMob({ ...props }: Props) {
                 Log out
               </MenuItem>
             </Link>
-           </div>
-           <div className="h-[1px] w-full bg-[#FFFFFF33] my-2 "></div>
-            <div className="flex flex-row-reverse items-center justify-center w-full mt-6">
-              {/* <FaChevronLeft
+          </div>
+          <div className="h-[1px] w-full bg-[#FFFFFF33] my-2 "></div>
+          <div className="flex flex-row-reverse items-center justify-center w-full mt-6">
+            {/* <FaChevronLeft
                 className="text-white-a700 text-[20px] cursor-pointer"
                 // onClick={toggleSidebar}
               /> */}
-              <Img
-                src="images/logo.svg"
-                alt="Hide Sidebar"
-                className=" cursor-pointer w-[150px]"
-              />
-            </div>
-         
+            <Img
+              src="images/logo.svg"
+              alt="Hide Sidebar"
+              className=" cursor-pointer w-[150px]"
+            />
+          </div>
         </Menu>
       </Sidebar>
       {/* {!visible && (
