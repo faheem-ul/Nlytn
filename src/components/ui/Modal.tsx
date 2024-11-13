@@ -12,10 +12,15 @@ interface ModalProps {
   closeModal: () => void;
 }
 
-const MyModal: React.FC<ModalProps> = ({ title, children, isOpen, closeModal }) => {
+const MyModal: React.FC<ModalProps> = ({
+  title,
+  children,
+  isOpen,
+  closeModal,
+}) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
-    <Dialog as="div" className="relative z-[1001]" onClose={closeModal}>
+      <Dialog as="div" className="relative z-[1001]" onClose={closeModal}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -25,7 +30,7 @@ const MyModal: React.FC<ModalProps> = ({ title, children, isOpen, closeModal }) 
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-[#000]/70" />
+          <div className="fixed inset-0 bg-[#000]/100" />
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto ">
@@ -40,7 +45,6 @@ const MyModal: React.FC<ModalProps> = ({ title, children, isOpen, closeModal }) 
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel className="w-full max-w-[635px]  transform overflow-hidden modal-bg border border-[#fff] rounded-[15px]  p-6 ">
-                
                 <div className="mt-2 flex justify-between items-center">
                   <Text className=" font-bold text-white-a700 text-[24px] mt-5 leading-6">
                     {title}

@@ -151,11 +151,9 @@ export default function SidebarMob({ ...props }: Props) {
                 Today
               </p>
               <div className="flex pr-3 justify-start gap-5">
-                <p
-                  className="text-[12px] text-[#ADADAD] font-normal leading-[13.8px] mt-2"
-                  onClick={toggleSidebar}
-                >
+                <p className="text-[12px] text-[#ADADAD] font-normal leading-[13.8px] mt-2">
                   Lorem ipsum dolor sit amet lorem ip
+                  <span onClick={toggleSidebar}> . . .</span>
                 </p>
                 {isDivVisible && (
                   <div className=" top-[230px] left-[210px] z-20 bg-[#fff] py-2 px-2 w-[60px] rounded shadow-lg">
