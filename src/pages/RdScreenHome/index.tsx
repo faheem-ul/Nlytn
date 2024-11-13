@@ -173,15 +173,15 @@ export default function RdScreenHomePage() {
 
         {/* HelpCenter component with conditional CSSTransition */}
         <CSSTransition
-          in={selectedComponent === "helpcenter" && animateHelpCenter} // Apply animation conditionally
+          in={selectedComponent === "helpcenter" && animateHelpCenter}
           timeout={600}
           classNames="flip"
           unmountOnExit
           onEnter={() => setIsTransitioning(true)}
           onExited={() => {
             setIsTransitioning(false);
-            if (selectedComponent === "helpcenter" && animateHelpCenter) {
-              setSelectedComponent("Workspace");
+            if (selectedComponent !== "helpcenter") {
+              setAnimateHelpCenter(false); // Reset animateHelpCenter only if not HelpCenter
             }
           }}
         >
