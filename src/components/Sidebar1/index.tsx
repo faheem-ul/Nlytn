@@ -47,13 +47,13 @@ export default function Sidebar1({ ...props }: Props) {
       <Sidebar
         {...props}
         style={{
-          width: visible ? "300px" : "0",
-          opacity: visible ? 1 : 0,
+          // width: visible ? "300px" : "0",
+          // opacity: visible ? 1 : 0,
           overflowX: "visible",
           overflowY: "hidden",
-          transition: "width 0.5s ease, opacity 0.5s ease",
+          // transition: "width 0.5s ease, opacity 0.5s ease",
         }}
-        className={`${props.className} flex flex-col h-screen pt-6 top-0 mob:hidden px-1.5 sm:pt-5 !border-gray-800 !border-r !border-solid bg-gray-900 !sticky `}
+        className={`${props.className} flex w-[232px] flex-col h-screen pt-6 top-0 mob:hidden px-1.5 sm:pt-5 !border-gray-800 !border-r !border-solid bg-gray-900 !sticky `}
       >
         <div className="flex gap-3 items-center border border-[#FFFFFF] rounded-[8px] p-[10px] w-full max-w-[200px] mx-auto">
           <div className="relative">
@@ -121,15 +121,14 @@ export default function Sidebar1({ ...props }: Props) {
                 <p className="text-[12px] text-[#FFFFFF] font-bold leading-[12.8px]">
                   Today
                 </p>
-                <p
-                  className="text-[12px] text-[#ADADAD] cursor-pointer font-normal leading-[13.8px] my-4"
-                  onClick={props.OpenShare}
-                >
-                  Lorem ipsum dolor sit amet lorem ip
+                <p className="text-[12px] text-[#ADADAD] cursor-pointer font-normal leading-[13.8px] my-4 whitespace-nowrap overflow-hidden text-ellipsis">
+                  Lorem ipsum dolor sit amet lorem ip{" "}
+                  <span onClick={props.OpenShare}> ...</span>
                 </p>
                 <div className="h-[1px] w-full bg-[#FFFFFF33] my-2"></div>
                 <p className="text-[12px] text-[#ADADAD] font-normal cursor-pointer leading-[13.8px] my-4 ">
                   Lorem ipsum dolor sit amet lorem ip
+                  <span onClick={props.OpenShare}> ...</span>
                 </p>
                 <div className="h-[1px] w-full bg-[#FFFFFF33] my-2"></div>
                 <p className="text-[12px] text-[#FFFFFF] font-bold leading-[12.8px]">
