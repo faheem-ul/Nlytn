@@ -115,33 +115,33 @@ export default function Sidebar1({ ...props }: Props) {
               }
             >
               <div className="pl-4 mb-4 max-h-[190px] relative mt-3 overflow-y-auto overflow-x-auto">
-                <div className="flex justify-end pr-3">
-                  {" "}
-                  {/* Adjust spacing here */}
+                <div className="flex justify-between pr-3 mt-2">
+                  <p className="text-[12px] text-[#FFFFFF] font-bold leading-[12.8px]">
+                    Today
+                  </p>
                   <img className="" src="images/edit.svg" alt="" />
                 </div>
-                <p className="text-[12px] text-[#FFFFFF] font-bold leading-[12.8px]">
-                  Today
-                </p>
-                <p className="text-[12px] text-[#ADADAD] cursor-pointer font-normal leading-[13.8px] my-4 whitespace-nowrap overflow-hidden text-ellipsis">
+
+                <p className="text-[12px] text-[#ADADAD] pr-3 cursor-pointer font-normal leading-[13.8px] my-4 whitespace-nowrap overflow-hidden text-ellipsis">
                   Lorem ipsum dolor sit amet lorem ip{" "}
                   <span onClick={props.OpenShare}> ...</span>
                 </p>
                 <div className="h-[1px] w-full bg-[#FFFFFF33] my-2"></div>
                 <p className="text-[12px] text-[#ADADAD] font-normal cursor-pointer leading-[13.8px] my-4 ">
                   Lorem ipsum dolor sit amet lorem ip
-                  <span onClick={props.OpenShare}> ...</span>
+                  <span> ...</span>
                 </p>
                 <div className="h-[1px] w-full bg-[#FFFFFF33] my-2"></div>
-                <p className="text-[12px] text-[#FFFFFF] font-bold leading-[12.8px]">
+                <p className="text-[12px] text-[#FFFFFF] font-bold leading-[12.8px] mt-[18px]">
                   Yesterday
                 </p>
-                <p className="text-[12px] text-[#ADADAD] font-normal cursor-pointer leading-[13.8px] mt-2">
-                  Lorem ipsum dolor sit amet lorem ip
+                <p className="text-[12px] text-[#ADADAD] pr-3 cursor-pointer font-normal leading-[13.8px] my-4 whitespace-nowrap overflow-hidden text-ellipsis">
+                  Lorem ipsum dolor sit amet lorem ip <span> ...</span>
                 </p>
                 <div className="h-[1px] w-full bg-[#FFFFFF33] my-2"></div>
-                <p className="text-[12px] text-[#ADADAD] font-normal cursor-pointer leading-[13.8px] mt-2">
+                <p className="text-[12px] text-[#ADADAD] font-normal cursor-pointer leading-[13.8px] my-4 ">
                   Lorem ipsum dolor sit amet lorem ip
+                  <span> ...</span>
                 </p>
                 <div className="h-[1px] w-full bg-[#FFFFFF33] my-2"></div>
               </div>
@@ -154,6 +154,7 @@ export default function Sidebar1({ ...props }: Props) {
 
           <div className="mr-2 flex flex-col gap-1.5 self-stretch bg-[#031627] relative z-[10]">
             <SubMenu
+              className="mt-[6px]"
               icon={
                 <Img
                   src="images/img_mingcute_comment_line.svg"
@@ -172,7 +173,37 @@ export default function Sidebar1({ ...props }: Props) {
                   : {}
               }
             >
-              <MenuItem>Submenu Item</MenuItem>
+              <div className="pl-4 mb-4 max-h-[190px] relative mt-3 overflow-y-auto overflow-x-auto">
+                <div className="flex justify-between pr-3 mt-2">
+                  <p className="text-[12px] text-[#FFFFFF] font-bold leading-[12.8px]">
+                    Today
+                  </p>
+                  <img className="" src="images/edit.svg" alt="" />
+                </div>
+
+                <p className="text-[12px] text-[#ADADAD] pr-3 cursor-pointer font-normal leading-[13.8px] my-4 whitespace-nowrap overflow-hidden text-ellipsis">
+                  Lorem ipsum dolor sit amet lorem ip{" "}
+                  <span onClick={props.OpenShare}> ...</span>
+                </p>
+                <div className="h-[1px] w-full bg-[#FFFFFF33] my-2"></div>
+                <p className="text-[12px] text-[#ADADAD] font-normal cursor-pointer leading-[13.8px] my-4 ">
+                  Lorem ipsum dolor sit amet lorem ip
+                  <span onClick={props.OpenShare}> ...</span>
+                </p>
+                <div className="h-[1px] w-full bg-[#FFFFFF33] my-2"></div>
+                <p className="text-[12px] text-[#FFFFFF] font-bold leading-[12.8px] mt-[18px]">
+                  Yesterday
+                </p>
+                <p className="text-[12px] text-[#ADADAD] pr-3 cursor-pointer font-normal leading-[13.8px] my-4 whitespace-nowrap overflow-hidden text-ellipsis">
+                  Lorem ipsum dolor sit amet lorem ip <span> ...</span>
+                </p>
+                <div className="h-[1px] w-full bg-[#FFFFFF33] my-2"></div>
+                <p className="text-[12px] text-[#ADADAD] font-normal cursor-pointer leading-[13.8px] my-4 ">
+                  Lorem ipsum dolor sit amet lorem ip
+                  <span> ...</span>
+                </p>
+                <div className="h-[1px] w-full bg-[#FFFFFF33] my-2"></div>
+              </div>
             </SubMenu>
             <MenuItem
               icon={
@@ -287,7 +318,7 @@ export default function Sidebar1({ ...props }: Props) {
           {/* <div className="mt-1.5 flex w-[40%] rounded-[12px] border-[0.5px] border-solid border-white-a700 bg-gradient mx-auto">
           <div className="h-[18px] w-[18px] rounded-lg bg-white-a700" />
         </div> */}
-          <div className="mr-2 mt-[120px] self-stretch w-full absolute pr-4 pb-10">
+          <div className="mr-2 mt-[120px] self-stretch w-full absolute bottom-0 pr-4 pb-10">
             <Link to="/">
               <MenuItem
                 icon={
@@ -302,7 +333,7 @@ export default function Sidebar1({ ...props }: Props) {
               </MenuItem>
             </Link>
             <div className="h-[1px] w-full bg-[#FFFFFF33] my-2 "></div>
-            <div className="flex flex-row-reverse items-center justify-between w-full mt-6">
+            <div className="flex flex-row-reverse items-center justify-between w-full mt-7">
               <FaChevronLeft
                 className="text-white-a700 text-[20px] cursor-pointer"
                 onClick={toggleSidebar}

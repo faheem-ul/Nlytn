@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { CSSTransition } from "react-transition-group";
 
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
@@ -12,13 +13,21 @@ import DataIngestion from "components/DataIngestion";
 import HelpCenter from "components/HelpCenter";
 import Alert from "components/Alert";
 
-interface props{
+interface props {
   onMenuItemClick: (item: string) => void;
 }
 
 const ResponsiveSidebar: React.FC<props> = ({}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedItem, setSelectedItem] = useState<string | "Workspace" >("Workspace");
+  const [selectedItem, setSelectedItem] = useState<string | "Workspace">(
+    "Workspace"
+  );
+  const [animateHelpCenter, setAnimateHelpCenter] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const handleOpenHelpCenter = () => {
+    setAnimateHelpCenter(true);
+    setSelectedItem("helpcenter");
+  };
 
   const onClose = () => setIsOpen(false);
   const onOpen = () => setIsOpen(true);
@@ -48,7 +57,7 @@ const ResponsiveSidebar: React.FC<props> = ({}) => {
       setSelectedItem(item);
     }
     // console.log(item);
-    onClose(); 
+    onClose();
   };
 
   return (
@@ -61,11 +70,7 @@ const ResponsiveSidebar: React.FC<props> = ({}) => {
                 to="/"
                 className="mob:flex hidden mob:justify-start mob:w-[121px] space-x-3 rtl:space-x-reverse"
               >
-                <img
-                  src="/images/logo.svg"
-                  alt="Flowbite Logo"
-                  
-                />
+                <img src="/images/logo.svg" alt="Flowbite Logo" />
               </Link>
 
               {/* tab and mob  menu*/}
@@ -102,7 +107,7 @@ const ResponsiveSidebar: React.FC<props> = ({}) => {
                 <div className="relative z-40">
                   <Drawer isOpen={isOpen} onClose={onClose}>
                     <div className="flex items-center h-full w-full ">
-                    <SidebarMob onMenuItemClick={handleMenuItemClick}/>
+                      <SidebarMob onMenuItemClick={handleMenuItemClick} />
                     </div>
                   </Drawer>
                 </div>
@@ -111,14 +116,36 @@ const ResponsiveSidebar: React.FC<props> = ({}) => {
           </div>
         </div>
       </nav>
+      {/* helpcenter */}
 
       <div className="mob:bg-[#010A12]">
-        {selectedItem === "Workspace" && <Worksapce />}
-        {selectedItem === "settings" && <Worksapce />}
+        {!isTransitioning && selectedItem === "Workspace" && (
+          <Worksapce flipHelpcenter={handleOpenHelpCenter} />
+        )}
+
+        {/* {selectedItem === "settings" && <Worksapce />} */}
         {selectedItem === "Shared THREADS" && <SharedThreads />}
         {selectedItem === "alert" && <Alert />}
         {selectedItem === "DATA INGESTION" && <DataIngestion />}
-        {selectedItem === "helpcenter" && <HelpCenter />}
+        <CSSTransition
+          in={selectedItem === "helpcenter" && animateHelpCenter}
+          timeout={600}
+          classNames="flip"
+          unmountOnExit
+          onEnter={() => setIsTransitioning(true)}
+          onExited={() => {
+            setIsTransitioning(false);
+            if (selectedItem === "helpcenter" && animateHelpCenter) {
+              setSelectedItem("Workspace");
+            }
+          }}
+        >
+          <HelpCenter openWorkspace={() => handleMenuItemClick("Workspace")} />
+        </CSSTransition>
+
+        {selectedItem === "helpcenter" && !animateHelpCenter && (
+          <HelpCenter openWorkspace={() => handleMenuItemClick("Workspace")} />
+        )}
       </div>
     </>
   );
