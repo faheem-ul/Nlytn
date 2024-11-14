@@ -367,11 +367,11 @@ export default function SidebarMob({ ...props }: Props) {
             </MenuItem>
             {/* Repeat for other items as necessary */}
           </div>
-          <div className="px-4 mt-2">
+          <div className="px-4 mt-2 ">
             <Heading
               size="headingxs"
               as="p"
-              className="mt-2.5 text-[10px] font-semibold uppercase tracking-[-0.10px] text-white-a700 text-left"
+              className="mt-2.5 text-center text-[10px] font-semibold uppercase tracking-[-0.10px] text-white-a700 "
             >
               light mode
             </Heading>
@@ -383,7 +383,7 @@ export default function SidebarMob({ ...props }: Props) {
             <Switch
               checked={enabled}
               onChange={setEnabled}
-              className="group relative flex h-[30px] cursor-pointer rounded-full switch-btn-gradient border border-[#fff] w-[84px] mt-3 p-1 duration-200 ease-in-out focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-white/10"
+              className="group relative mx-auto flex h-[30px] cursor-pointer rounded-full switch-btn-gradient border border-[#fff] w-[84px] mt-3 p-1 duration-200 ease-in-out focus:outline-none data-[focus]:outline-1 data-[focus]:outline-white data-[checked]:bg-white/10"
             >
               <span
                 aria-hidden="true"
@@ -396,32 +396,36 @@ export default function SidebarMob({ ...props }: Props) {
           {/* <div className="mt-1.5 flex w-[40%] rounded-[12px] border-[0.5px] border-solid border-white-a700 bg-gradient mx-auto">
           <div className="h-[18px] w-[18px] rounded-lg bg-white-a700" />
         </div> */}
-          <div className="mr-2 mt-[120px] mob:mt-5 self-stretch ">
-            <Link to="/">
-              <MenuItem
-                icon={
-                  <Img
-                    src="images/img_icon_indigo_50_24x24.svg"
-                    alt="Icon"
-                    className="h-[24px] w-[24px]"
-                  />
-                }
-              >
-                Log out
-              </MenuItem>
-            </Link>
-          </div>
-          <div className="h-[1px] w-full bg-[#FFFFFF33] my-2 "></div>
-          <div className="flex flex-row-reverse items-center justify-center w-full mt-6">
-            {/* <FaChevronLeft
+          <div className="absolute bottom-0 pb-12 left-[30%]">
+            <div className="mr-2  mob:mt-5 self-stretch ">
+              <Link to="/">
+                <MenuItem
+                  icon={
+                    <Img
+                      src="images/img_icon_indigo_50_24x24.svg"
+                      alt="Icon"
+                      className="h-[24px] w-[24px]"
+                    />
+                  }
+                >
+                  Log out
+                </MenuItem>
+              </Link>
+            </div>
+            <div className="h-[1px] w-full bg-[#FFFFFF33] my-2 "></div>
+            <div className="flex flex-row-reverse items-center justify-center w-full mt-6">
+              {/* <FaChevronLeft
                 className="text-white-a700 text-[20px] cursor-pointer"
                 // onClick={toggleSidebar}
               /> */}
-            <Img
-              src="images/logo.svg"
-              alt="Hide Sidebar"
-              className=" cursor-pointer w-[150px]"
-            />
+              <Link to="/">
+                <Img
+                  src="images/logo.svg"
+                  alt="Hide Sidebar"
+                  className=" cursor-pointer w-[150px]"
+                />
+              </Link>
+            </div>
           </div>
         </Menu>
       </Sidebar>

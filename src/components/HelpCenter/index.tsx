@@ -12,12 +12,12 @@ const HelpCenter: React.FC<Props> = ({ openWorkspace }) => {
   const [text, setText] = useState("");
 
   return (
-    <div className="flex-1 px-5 py-[100px] mob:pb-10 mob:pt-0 help-center-bg min-h-[100vh]  relative ">
+    <div className="flex-1 px-12 mob::px-5 py-[100px] mob:pb-10 mob:pt-0 help-center-bg min-h-[100vh] mob:items-start relative flex justify-center items-center">
       {/* <ResponsiveSidebar /> */}
-      <div className="absolute inset-0 bg-[#000000] opacity-50 "></div>
+      <div className="absolute inset-0 bg-[#000000] mob:bg-[#010A12] opacity-70 "></div>
       <button
         onClick={openWorkspace}
-        className="text-white-a700 text-[9px] font-semibold absolute top-5 mob:top-[90px] left-10 bg-[#0F2A37]  rounded-full w-[55px] h-[21px] flex justify-center items-center gap-1"
+        className="text-white-a700 mob:hidden text-[9px] font-semibold absolute top-5 mob:top-[90px] left-10 bg-[#0F2A37]  rounded-full w-[55px] h-[21px] flex justify-center items-center gap-1"
       >
         <img src="images/Arrowbaack.svg" alt="" /> Back
       </button>
@@ -74,7 +74,7 @@ const HelpCenter: React.FC<Props> = ({ openWorkspace }) => {
             type="text"
             value={text}
             onChange={(e) => setText(e.target.value)}
-            className="w-full text-[#BABABA] bg-[#041320]  font-semibold border-none outline-none focus:outline-none focus:ring-0  pl-10 pr-[60px] h-[54px]"
+            className="w-full text-[#BABABA] bg-[#041320]  font-semibold border-none outline-none focus:outline-none focus:ring-0  pl-[20px] pr-[60px] h-[54px]"
             placeholder="What else can I help with?"
           />
 
