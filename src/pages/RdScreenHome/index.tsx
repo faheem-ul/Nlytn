@@ -31,21 +31,42 @@ export default function RdScreenHomePage() {
   const [isDivVisible, setIsDivVisible] = useState(false);
   const divRef = useRef<HTMLDivElement>(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [animateHelpCenter, setAnimateHelpCenter] = useState(false); // NEW STATE
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [animateHelpCenter, setAnimateHelpCenter] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure(); // Modal state from hook
 
   const handleMenuItemClick = (item: SidebarComponent) => {
-    setAnimateHelpCenter(false); // No animation if accessed from sidebar
+    setAnimateHelpCenter(false);
     setSelectedComponent(item);
   };
+
   const toggleDivVisibility = () => {
-    setIsDivVisible((prev) => !prev);
+    setIsDivVisible(true);
+    // console.log("Clicked");
   };
 
   const handleOpenHelpCenter = () => {
-    setAnimateHelpCenter(true); // Animation only when HelpCenter is opened from Workspace
+    setAnimateHelpCenter(true);
     setSelectedComponent("helpcenter");
   };
+
+  // Close div when clicking outside
+  useEffect(() => {
+    const handleOutsideClick = (e: MouseEvent) => {
+      if (divRef.current && !divRef.current.contains(e.target as Node)) {
+        setIsDivVisible(false);
+      }
+    };
+
+    if (isDivVisible) {
+      document.addEventListener("mousedown", handleOutsideClick);
+    } else {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [isDivVisible]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -73,62 +94,61 @@ export default function RdScreenHomePage() {
         >
           <Text
             className="text-[8px] font-medium text-[#000] cursor-pointer"
-            onClick={onOpen}
+            onClick={onOpen} // Open modal when clicking "Share"
           >
             Share
           </Text>
-          <MyModal title="Share Thread" isOpen={isOpen} closeModal={onClose}>
-            <div className="relative flex items-center justify-center">
-              {/* Left Image */}
-              <img
-                src="images/user.svg"
-                alt="Left Icon"
-                className="absolute left-10 top-11 mob:left-[2%] "
-              />
-
-              {/* Input field */}
-              <input
-                type="text"
-                className="w-[525px] mt-[27px] h-[51px] pl-10 mb-[99px] focus:border-[#fff] text-white-a700 border border-[#fff]/30 bg-transparent mob:mb-4"
-                placeholder="Add a name, group, or email"
-              />
-
-              {/* Right Images */}
-              <div className="absolute right-10 mob:right-[2%] top-11 flex gap-1">
-                <img
-                  src="images/eye.svg"
-                  alt="Right Icon 1"
-                  className="w-6 h-6"
-                />
-                <img
-                  src="images/down-arrow.svg"
-                  alt="Right Icon 2"
-                  className="w-6 h-6"
-                />
-              </div>
-            </div>
-
-            <div className="flex justify-between items-center">
-              <img src="images/group-persons.svg" alt="" />
-              <div className="flex gap-5 items-center">
-                <Text
-                  className=" font-semibold text-[16px] text-white-a700 cursor-pointer"
-                  onClick={onClose}
-                >
-                  Cancel
-                </Text>
-                <button className="w-[117px] h-[51px] signin-btn-gradient rounded-[5px] text-white-a700 font-semibold">
-                  Send
-                </button>
-              </div>
-            </div>
-          </MyModal>
           <hr className="my-1" />
           <Text className="text-[8px] font-medium text-[#000] cursor-pointer">
             Delete
           </Text>
         </div>
       )}
+
+      {/* Render Modal independently of isDivVisible */}
+      <MyModal title="Share Thread" isOpen={isOpen} closeModal={onClose}>
+        <div className="relative flex items-center justify-center">
+          {/* Left Image */}
+          <img
+            src="images/user.svg"
+            alt="Left Icon"
+            className="absolute left-10 top-11 mob:left-[2%] "
+          />
+
+          {/* Input field */}
+          <input
+            type="text"
+            className="w-[525px] mt-[27px] h-[51px] pl-10 mb-[99px] focus:border-[#fff] text-white-a700 border border-[#fff]/30 bg-transparent mob:mb-4"
+            placeholder="Add a name, group, or email"
+          />
+
+          {/* Right Images */}
+          <div className="absolute right-10 mob:right-[2%] top-11 flex gap-1">
+            <img src="images/eye.svg" alt="Right Icon 1" className="w-6 h-6" />
+            <img
+              src="images/down-arrow.svg"
+              alt="Right Icon 2"
+              className="w-6 h-6"
+            />
+          </div>
+        </div>
+
+        <div className="flex justify-between items-center">
+          <img src="images/group-persons.svg" alt="" />
+          <div className="flex gap-5 items-center">
+            <Text
+              className="font-semibold text-[16px] text-white-a700 cursor-pointer"
+              onClick={onClose}
+            >
+              Cancel
+            </Text>
+            <button className="w-[117px] h-[51px] signin-btn-gradient rounded-[5px] text-white-a700 font-semibold">
+              Send
+            </button>
+          </div>
+        </div>
+      </MyModal>
+
       <div
         className="flex w-full mob:flex-col items-start bg-[#000]"
         id="RdScreenHome"
@@ -147,31 +167,26 @@ export default function RdScreenHomePage() {
           />
         )}
 
-        {/* Workspace component */}
         {!isTransitioning && selectedComponent === "Workspace" && (
           <Workspace flipHelpcenter={handleOpenHelpCenter} />
         )}
 
-        {/* SharedThreads component */}
         {selectedComponent === "SharedThreads" && (
           <SharedThreads
             openWorkspace={() => handleMenuItemClick("Workspace")}
           />
         )}
 
-        {/* DataIngestion component */}
         {selectedComponent === "DATA INGESTION" && (
           <DataIngestion
             openWorkspace={() => handleMenuItemClick("Workspace")}
           />
         )}
 
-        {/* Alert component */}
         {selectedComponent === "alert" && !isTransitioning && (
           <Alert openWorkspace={() => handleMenuItemClick("Workspace")} />
         )}
 
-        {/* HelpCenter component with conditional CSSTransition */}
         <CSSTransition
           in={selectedComponent === "helpcenter" && animateHelpCenter}
           timeout={600}
@@ -180,15 +195,14 @@ export default function RdScreenHomePage() {
           onEnter={() => setIsTransitioning(true)}
           onExited={() => {
             setIsTransitioning(false);
-            if (selectedComponent !== "helpcenter") {
-              setAnimateHelpCenter(false); // Reset animateHelpCenter only if not HelpCenter
+            if (selectedComponent === "helpcenter" && animateHelpCenter) {
+              setSelectedComponent("Workspace");
             }
           }}
         >
           <HelpCenter openWorkspace={() => handleMenuItemClick("Workspace")} />
         </CSSTransition>
 
-        {/* Render HelpCenter without animation if not from Workspace */}
         {selectedComponent === "helpcenter" && !animateHelpCenter && (
           <HelpCenter openWorkspace={() => handleMenuItemClick("Workspace")} />
         )}

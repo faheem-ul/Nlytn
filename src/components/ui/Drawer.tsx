@@ -56,7 +56,7 @@ const Drawer: React.FC<DrawerProps> = ({
     <>
       {isOpen && (
         <div
-          className="fixed  right-0 top-0 z-[100] h-full w-full  "
+          className="fixed right-0 top-0 z-[100] h-full w-full  "
           onClick={handleOverlayClick}
         >
           {/* open */}
@@ -77,19 +77,23 @@ const Drawer: React.FC<DrawerProps> = ({
         }}
       >
         {/* Drawer Close Button */}
-        <div className="mt-[20px]  px-[30px] mob:px-[15px] flex justify-end items-center">
-          {/* <Text className="text-[#000] text-[20px] font-organetto font-extrabold leading-[60px] uppercase ">
-            {drawerTitle ? drawerTitle : "Drawer"}
-          </Text> */}
-          <button className="text-white-a700" onClick={onClose}>
-            {/* <Image src={closeIcon} alt="closeIcon" /> */}
-            <AiOutlineCloseCircle className="text-[40px] text-white" />
-          </button>
-        </div>
 
         {/* Drawer content */}
         {/* Conditionally render the children based on 'isOpen' */}
-        {isOpen && <div className="h-full  pb-[50px]">{children}</div>}
+        {isOpen && (
+          <div className="h-full ">
+            <div className="mt-[20px]  px-[30px] mob:px-[15px] flex justify-end items-center ">
+              {/* <Text className="text-[#000] text-[20px] font-organetto font-extrabold leading-[60px] uppercase ">
+            {drawerTitle ? drawerTitle : "Drawer"}
+          </Text> */}
+              <button className="text-white-a700" onClick={onClose}>
+                {/* <Image src={closeIcon} alt="closeIcon" /> */}
+                <AiOutlineCloseCircle className="text-[40px] text-white" />
+              </button>
+            </div>
+            {children}
+          </div>
+        )}
       </div>
     </>
   );
