@@ -17,6 +17,7 @@ const Worksapce: React.FC<props> = ({ flipHelpcenter }) => {
   const [images, setImages] = useState([]);
   const [text, setText] = useState("");
   const [currentAnswer, setCurrentAnswer] = useState(1);
+  // const [contaierHeight, setcontaierHeight] = useState("h-80px");
   //   const totalAnswers = 4;
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -92,16 +93,17 @@ const Worksapce: React.FC<props> = ({ flipHelpcenter }) => {
     const files = Array.from(e.target.files) as File[]; // Cast files to an array of File objects
     const newImages = files.map((file) => URL.createObjectURL(file));
     setImages((prevImages) => [...prevImages, ...newImages]);
+    // setcontaierHeight(images.length > 0 ? "h-130px" : "h-80px");
   };
 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const maxVisibleImages = 6;
 
   return (
-    <div className="workspace-bg bg-[#010A12CC]/100 bg-opacity-80 w-full min-h-[100vh] h-full relative px-5">
+    <div className="workspace-bg bg-[#010A12CC]/100 bg-opacity-80 w-full min-h-[100vh] h-full relative flex flex-col justify-center items-center">
       <div className="absolute inset-0 bg-[#000000] opacity-70 mob:bg-[#010A12]"></div>
       {/* <ResponsiveSidebar /> */}
-      <div className="flex-1 mob:px-0 px-8 pb-[100px] mob:py-10 relative mt-16 mob:mt-0">
+      <div className="flex-1 mob:px-0 px-5 pb-[100px] mob:py-10 relative mt-16 mob:mt-0 w-full max-w-[1150px]">
         <div className="flex flex-col items-start rounded-[20px] border border-solid border-white-a700 bg-gray-900 px-5 py-[34px]">
           <div className="flex justify-between w-full">
             <Heading
@@ -291,7 +293,10 @@ const Worksapce: React.FC<props> = ({ flipHelpcenter }) => {
               <Text className="text-[#ADADAD] text-[12px]">Lorem Ipsum</Text>
             </div>
           </div>
-          <div className="relative w-full border border-[#fff] rounded-t-[12px] input-gradient py-4 px-8 h-[130px]">
+          <div
+            className={`relative w-full border border-[#fff] rounded-t-[12px] input-gradient py-4 px-8 min-h-[60px]
+            `}
+          >
             {/* Images preview area */}
             <div className="relative">
               {images.map((image, index) => (
@@ -313,8 +318,8 @@ const Worksapce: React.FC<props> = ({ flipHelpcenter }) => {
                     src={image}
                     alt={`Thumbnail ${index + 1}`}
                     className="w-[60px] h-[55px] rounded-md"
-                    onMouseEnter={() => setHoveredIndex(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
+                    // onMouseEnter={() => setHoveredIndex(index)}
+                    // onMouseLeave={() => setHoveredIndex(null)}
                   />
                 ))}
 
@@ -332,7 +337,9 @@ const Worksapce: React.FC<props> = ({ flipHelpcenter }) => {
               type="text"
               value={text}
               onChange={(e) => setText(e.target.value)}
-              className="w-full text-white-a700 bg-transparent font-semibold border-none outline-none focus:outline-none focus:ring-0 pt-4 mob:pl-8 pl-4 pr-[40px]"
+              className={`w-full text-white-a700 bg-transparent font-semibold border-none outline-none focus:outline-none focus:ring-0 mob:pl-8 ${
+                images.length > 0 ? "pt-4 pb-1" : "pt-0"
+              } pl-4 pr-[40px]`}
               // placeholder="Type here..."
             />
 
@@ -423,7 +430,7 @@ const Worksapce: React.FC<props> = ({ flipHelpcenter }) => {
         </div>
       </div>
 
-      <div className="relative mb-[400px] flex w-full items-center flex-wrap gap-[55px] mob:mb-10 justify-center mob:gap-[26px]">
+      <div className="relative mb-[400px] flex w-full items-center flex-wrap gap-[55px] mob:mb-10 justify-center mob:gap-[26px] ">
         {workspacecards.map((card, num) => (
           <div
             key={num}

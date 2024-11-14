@@ -42,7 +42,7 @@ body {
   /* overflow: unset; */
 }
 .ps-collapsed .ps-menu-icon {
-  /* min-width: 100% !important; */
+  min-width: 100% !important;
   /* justify-content: center !important; */
 }
 .ps-collapsed {
@@ -56,7 +56,7 @@ body {
   flex-direction: column; */
 }
 .ps-sidebar-root {
-  /* min-width: unset !important; */
+  /* min-width: 300px !important; */
 }
 .ps-collapsed,
 .ps-collapsed .ps-menu-root,
@@ -161,16 +161,19 @@ linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
 .workspace-bg {
   background-image: url('../../public/images/signin-net.png'); 
   background-repeat: no-repeat;
-  background-size: 100% 20%; 
+  background-size: 100% 40%; 
   background-position: bottom; 
+  min-height: 100vh; 
   width: 100%;
 }
 
 .threads-bg {
-  background-image: url('../../public/images/signin-net.png'); 
+  background-image: url('../../public/images/signin-net.png');
   background-repeat: no-repeat;
-  background-size: 100% 45%; 
-  background-position: bottom; 
+  background-size: 100% 40%; 
+  background-position: bottom;
+  background-attachment: fixed; 
+  min-height: 100vh; 
   width: 100%;
 }
 
@@ -231,7 +234,10 @@ linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
   width: 100%;
 }
 }
-
+.css-ewdv3l{
+  width: auto;
+  min-width: auto;
+}
 .custom-mine {
   /* scrollbar-width: thin; */
   scrollbar-color: #4b5563 #f1f1f1; 

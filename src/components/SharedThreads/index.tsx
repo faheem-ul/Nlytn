@@ -26,21 +26,12 @@ const SharedThreads: React.FC<Props> = ({ openWorkspace }) => {
     "Lorem ipsum dolor sit amet?",
   ];
   return (
-    <div className="threads-bg bg-[#010A12CC]/100 bg-opacity-80 w-full mx-auto relative px-5 mob:bg-[#05141D] ">
+    <div className="threads-bg bg-[#010A12CC]/100 bg-opacity-80 flex justify-center items-center w-full mx-auto relative px-5 mob:bg-[#05141D] min-h-screen">
       <div className="absolute inset-0 bg-[#000000] opacity-70 mob:bg-[#010A12]"></div>
-      {/* <ResponsiveSidebar /> */}
-      <button
-        className="bg-[#0F2A37] relative  px-3 py-3 rounded-[60px] mt-[46px] mob:my-[10px] mob:mx-4 ml-[40px]"
-        onClick={() => openWorkspace && openWorkspace()}
-      >
-        <div className="flex items-center gap-1">
-          <img src="images/Arrowbaack.svg" alt="" className="w-[20px]" />
-          <Text className="text-white-a700 font-black">Back</Text>
-        </div>
-      </button>
-      <div className="w-full flex justify-center h-full items-center mt-[60px] mob:mt-6 mob:mb-14">
+
+      <div className="w-full flex justify-center h-full items-center mob:mt-6">
         <div className="flex px-5 relative w-full max-w-[1144px] justify-center items-center signin-gradient border border-solid border-[#fff]/20 rounded-[20px]">
-          <div className="flex flex-col items-start justify-center w-full max-w-[1046px] rounded-[20px] px-5 py-[34px] mob:px-0">
+          <div className="flex flex-col items-start justify-center w-full max-w-[1104px] rounded-[20px] px-5 py-[34px] mob:px-0">
             <div className="flex justify-between items-center w-full mt-[55px] mb-[31px] mob:mt-[7px] mob:mb-[15px]">
               <Heading
                 as="h1"
@@ -100,7 +91,7 @@ const SharedThreads: React.FC<Props> = ({ openWorkspace }) => {
             </div>
             <input
               type="text"
-              className="w-full mb-[31px] bg-[#041320] mob:mt-5 focus:border-[#fff] focus:ring-0 focus:outline-none pl-[26px] pr-[14px] mob:px-2 mob:text-[12px] placeholder:text-center text-white-a700 rounded-[10px] threads-input-with-image h-[54px]"
+              className="w-full mb-[31px] bg-[#041320] mob:mt-5 focus:border-[#fff] focus:ring-0 focus:outline-none pl-[26px] pr-[14px] mob:px-2 mob:text-[12px] mob:placeholder:text-center text-white-a700 rounded-[10px] threads-input-with-image h-[54px]"
               placeholder="Ask follow-up questions or related tasks"
             />
             <Text className="text-[16px] font-bold mb-5 text-white-a700">
